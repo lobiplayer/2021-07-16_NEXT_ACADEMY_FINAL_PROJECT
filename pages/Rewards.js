@@ -1,21 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text } from 'react-native';
+import RewardLoad from '../components/RewardLoad';
 
-export default function Rewards() {
+
+const Rewards = () => {
+
     return (
-        <View style={styles.container}>
-            <Text>Alette</Text>
-            <StatusBar style="auto" />
+        <View style={styles.layout}>
+            <RewardLoad />
+
         </View>
-    );
+
+    )
 }
 
+export default Rewards;
+
+
+// Styles
+
 const styles = StyleSheet.create({
-    container: {
+    layout: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
+        margin: 50,
+    },
+
+    // Style of the box holding the flower
+    previousFlowers: {
+        borderWidth: 1,
+        height: 50,
+        marginTop: 70,
     },
 });
