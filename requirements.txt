@@ -1,0 +1,5 @@
+react
+react-native
+expo-status-bar
+
+native-calendar-strip 
