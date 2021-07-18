@@ -1,0 +1,9 @@
+react
+react-native
+expo-status-bar
+
+native-calendar-strip 
+@react-navigation/native
+@react-navigation/bottom-tabs
+react-native-screens
+react-native-elements
