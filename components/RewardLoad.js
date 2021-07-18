@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
 import RewardPrevious from './RewardPrevious';
 
 const RewardLoad = () => {
+
 
     const maxPoints = 300
     const [newPoints, setNewpoints] = useState(100)
@@ -101,13 +102,16 @@ const RewardLoad = () => {
 
         < View style={styles.layout} >
             <View style={styles.rewardBox}>
-                <Button title='Complete task' type='outline' onPress={(e) => { addPoints(e); rewardOutput(newPoints); updateOutput(e) }} />
-                <Text>{points.message}</Text>
-                <Text>{points.currentPoints}</Text>
-                <Image source={points.rewardImage} style={styles.rewardBox} />
+                <Pressable onPress={(e) => { addPoints(e); rewardOutput(newPoints); updateOutput(e) }} style={styles.button}>
+                    <Text>Complete Task </Text>
+                    </Pressable>
+                <Text>Current points</Text>
+                <Text style={styles.currentPointsDisplay}> {points.currentPoints} </Text>
+                <Text style={styles.messageRewardsDisplay}>{points.message}</Text>
+                <Image source={points.rewardImage} style={styles.rewardPic} />
             </View>
             <View style={styles.previousRewards}>
-                <Text>Completed tasks</Text>
+                <Text style={styles.pageTitle}>COLLECTION OF REWARDS</Text>
                 <RewardPrevious previousRewards={previousRewards} />
             </View>
 
@@ -132,26 +136,72 @@ export default RewardLoad;
 // Styles
 
 const styles = StyleSheet.create({
+
+
+
     layout: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 50,
+
     },
 
     // Style of the box holding the reward
     rewardBox: {
-        borderWidth: 1,
         height: 300,
         width: 300,
+        flex: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    rewardPic: {
+        marginTop: 50,
+        height: 250,
+        width: 250,
+
     },
 
     previousRewards: {
         borderWidth: 1,
-        height: 50,
-        marginTop: 90,
+        borderRadius: 20,
+        padding: 15,
+        height: 20,
+        width: Dimensions.get('window').width,
+        marginTop: 60,
         flex: 1,
+        borderColor: '#F4A460',
+        backgroundColor: '#FFDAB9',
     },
+
+    currentPointsDisplay: {
+        fontSize: 30,   
+        color: '#D2691E',
+    }, 
+
+    messageRewardsDisplay: {
+        fontSize: 16,
+        paddingTop: 10,
+        paddingBottom: 10,
+        textAlign: 'center',
+    },
+
+    button: {
+        backgroundColor: 'lightgray',
+        height: 50,
+        width: 200,
+        color: 'white',
+        margin: 10, 
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    pageTitle: {
+        fontSize: 16,
+        color: '#D2691E',
+
+    }
 });
 
 

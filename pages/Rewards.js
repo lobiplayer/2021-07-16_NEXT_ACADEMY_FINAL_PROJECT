@@ -7,10 +7,9 @@ import RewardLoad from '../components/RewardLoad';
 const Rewards = () => {
 
     return (
-        <View style={styles.layout}>
+        <ScrollView contentContainerStyle={styles.layout}>
             <RewardLoad />
-
-        </View>
+        </ScrollView>
 
     )
 }
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 50,
+        marginTop: 50,
     },
 
     // Style of the box holding the flower
