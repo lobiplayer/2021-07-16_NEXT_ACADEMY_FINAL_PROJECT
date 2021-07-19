@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
+import Adddeadline from '../components/Adddeadline'
+import ModalAdddeadline from '../components/Modal'
 
 export default function Calendar() {
     return (
@@ -15,6 +17,10 @@ export default function Calendar() {
                 dateNameStyle={{ color: 'white' }}
                 iconContainer={{ flex: 0.1 }}
             />
+
+            <ModalAdddeadline />
+
+
         </View>
     );
 }
