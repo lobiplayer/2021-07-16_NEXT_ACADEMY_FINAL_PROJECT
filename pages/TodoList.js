@@ -16,56 +16,68 @@ import {
     View,
     TextInput,
     Platform,
-    Keyboard
+    Keyboard,
+    ScrollView
 } from 'react-native';
+
 
 export default function TodoList() {
     const [task, setTask] = useState();
     const [taskItems, setTaskItems] = useState([]);
+    const itemsCopy = [...taskItems]
 
     // taking taskItems and appending it to an array //z
-    const handleAddTask = () => {
-        Keyboard.dismiss();
-        setTaskItems([...taskItems, task])
-        textInput.clear();
+    const handleSubmit = () => {
+        if (task.trim().length != 0) {
+            Keyboard.dismiss();
+            setTaskItems([...taskItems, task])
+            setTask("")
+            textInput.clear();
+        }
     }
 
     // completing a task & deleting //
-    const completeTask = (index) => {
-        let itemsCopy = [...taskItems]
+    const deleteTask = (index) => {
         itemsCopy.splice(index, 1)
         setTaskItems(itemsCopy);
     }
 
+
     return (
         <View style={styles.container}>
-
-            <View style={styles.tasksWrapper}>
-                <Text style={styles.title}>Todo List</Text>
-                <View style={styles.items}>
-                    {/* List of tasks created */}
-                    {
-                        taskItems.map((item, index) => {
-                            return (
-                                <Task key={index} text={item} completeTask={completeTask} index={index}/>
-                            )
-                        })
-                    }
+            <ScrollView>
+                <View style={styles.tasksWrapper}>
+                    <Text style={styles.title}>Todo List</Text>
+                    <View style={styles.items}>
+                        {/* List of tasks created */}
+                        {
+                            taskItems.map((item, index) => {
+                                return (
+                                    <Task key={index} text={item} deleteTask={deleteTask} index={index} />
+                                )
+                            })
+                        }
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
 
             {/* inputing a task/write a task */}
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height "}
                 style={styles.writeTaskWrapper}
             >
-                <TextInput style={styles.input} placeholder={"Write a task"} onChangeText={text => setTask(text)} ref={input => { textInput = input }} />
-                <TouchableOpacity onPress={() => handleAddTask()}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={"Write a task"}
+                    onChangeText={text => setTask(text.trim())}
+                    ref={input => { textInput = input }}
+                />
+                {/* Button */}
+                <TouchableOpacity onPress={() => handleSubmit()}>
                     <View style={styles.addWrapper}>
                         <Text style={styles.addText}>+</Text>
                     </View>
                 </TouchableOpacity>
-
             </KeyboardAvoidingView>
 
         </View>
@@ -88,10 +100,10 @@ const styles = StyleSheet.create({
     },
     items: {
         marginTop: 30,
+        marginBottom: 35,
     },
     writeTaskWrapper: {
-        position: 'absolute',
-        bottom: 60,
+        bottom: 35,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
