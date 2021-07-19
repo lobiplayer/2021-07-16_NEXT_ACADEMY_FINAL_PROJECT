@@ -16,42 +16,37 @@ const spacingicons = '     '
 
 export default function Navigation() {
     return (
-        <Bottom.Navigator>
-            <Bottom.Screen name="Home" component={Homepage}
+        <Bottom.Navigator >
+            <Bottom.Screen name="Home" component={Homepage} 
                 options={{
-                    tabBarLabel: spacingicons,
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="home" color={color} size={30} />
                     ),
                 }}
             />
-            <Bottom.Screen name="Pomodoro" component={Pomodoro}
+            <Bottom.Screen name="Pomodoro" component={Pomodoro} 
                 options={{
-                    tabBarLabel: spacingicons,
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="clock-check" color={color} size={size} />
                     ),
                 }}
             />
-            <Bottom.Screen name="Calendar" component={Calendar}
+            <Bottom.Screen name="Calendar" component={Calendar} 
                 options={{
-                    tabBarLabel: spacingicons,
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="calendar-today" color={color} size={size} />
                     ),
                 }}
             />
-            <Bottom.Screen name="ToDos" component={TodoList}
+            <Bottom.Screen name="ToDos" component={TodoList} 
                 options={{
-                    tabBarLabel: spacingicons,
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="account-check" color={color} size={size} />
                     ),
                 }}
-            />
-            <Bottom.Screen name="Rewards" component={Rewards}
+            /> 
+            <Bottom.Screen name="Rewards" component={Rewards} 
                 options={{
-                    tabBarLabel: spacingicons,
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="medal" color={color} size={size} />
                     ),
@@ -68,4 +63,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
+
 });
