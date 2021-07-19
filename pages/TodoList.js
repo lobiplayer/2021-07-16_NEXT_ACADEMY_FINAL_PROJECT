@@ -27,7 +27,7 @@ export default function TodoList() {
     const handleAddTask = () => {
         Keyboard.dismiss();
         setTaskItems([...taskItems, task])
-        this.textInput.clear()
+        textInput.clear();
     }
 
     // completing a task & deleting //
@@ -47,9 +47,7 @@ export default function TodoList() {
                     {
                         taskItems.map((item, index) => {
                             return (
-                                <TouchableOpacity key={index} onPress={() => completeTask(index)} >
-                                    <Task text={item} />
-                                </TouchableOpacity>
+                                <Task key={index} text={item} completeTask={completeTask} index={index}/>
                             )
                         })
                     }
@@ -61,7 +59,7 @@ export default function TodoList() {
                 behavior={Platform.OS === "ios" ? "padding" : "height "}
                 style={styles.writeTaskWrapper}
             >
-                <TextInput style={styles.input} placeholder={"Write a task"} onChangeText={text => setTask(text)} ref={input => { this.textInput = input }}/>
+                <TextInput style={styles.input} placeholder={"Write a task"} onChangeText={text => setTask(text)} ref={input => { textInput = input }} />
                 <TouchableOpacity onPress={() => handleAddTask()}>
                     <View style={styles.addWrapper}>
                         <Text style={styles.addText}>+</Text>
