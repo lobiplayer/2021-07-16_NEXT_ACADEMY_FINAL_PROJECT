@@ -158,9 +158,8 @@ const styles = StyleSheet.create({
     },
 
     rewardPic: {
-        marginTop: 50,
-        height: 250,
-        width: 250,
+        height: 270,
+        width: 270,
         justifyContent: 'center',
         alignItems: 'center',
 

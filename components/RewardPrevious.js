@@ -9,7 +9,7 @@ const FlowerPrevious = ({ previousRewards }) => {
         <View style={styles.layout}>
 
             <View >
-                <Text style={styles.pageTitle}>COLLECTION OF REWARDS</Text>
+                <Text style={styles.pageTitle}>MY COLLECTION</Text>
             </View>
 
             <ScrollView horizontal >
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
 
 
     previousRewardCard: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
         backgroundColor: 'white',
         margin: 16,
         borderRadius: 2,
