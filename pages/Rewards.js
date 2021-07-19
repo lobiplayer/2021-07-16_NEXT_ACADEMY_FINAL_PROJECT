@@ -8,13 +8,13 @@ import RewardTotal from '../components/RewardTotal';
 const Rewards = () => {
 
 
-    const maxPoints = 300
+    const maxPoints = 500
     const [newPoints, setNewpoints] = useState(0)
     let pointsToBloom = maxPoints - newPoints;
     const [totalPoints, setTotalpoints] = useState(0)
 
 
-    const [rewardInfo, setRewardinfo] = useState({ rewardImage: require('../assets/Seed.png'), rewardMessage: 'Plant your first flower by completing a task or a Pomodoro timer.' });
+    const [rewardInfo, setRewardinfo] = useState({ rewardImage: require('../assets/PacketofSeeds.png'), rewardMessage: 'Plant your first flower by completing a task or a Pomodoro timer.' });
 
     const [points, setPoints] = useState({
         currentPoints: newPoints, message: rewardInfo.rewardMessage,
@@ -72,7 +72,7 @@ const Rewards = () => {
 
     function rewardOutput(newPoints) {
 
-        if (newPoints == 300) {
+        if (newPoints == 500) {
             setRewardinfo({
                 rewardImage: data[0][0].image,
                 rewardMessage: data[0][0].message
@@ -93,6 +93,20 @@ const Rewards = () => {
             });
         }
 
+        else if (newPoints == 300) {
+            setRewardinfo({
+                rewardImage: data[3][0].image,
+                rewardMessage: data[3][0].message
+            });
+        }
+
+        else if (newPoints == 400) {
+            setRewardinfo({
+                rewardImage: data[4][0].image,
+                rewardMessage: data[4][0].message
+            });
+        }
+
         else {
             setRewardinfo({
                 rewardImage: data[0][0].image,
@@ -103,9 +117,11 @@ const Rewards = () => {
 
 
     let data = [
-        [{ image: require('../assets/Seed.png'), message: "You have just planted a new seed. Complete another task and watch your plant grow." }],
-        [{ image: require('../assets/Structure.png'), message: "One more task and your flower will bloom!" }],
-        [{ image: require('../assets/Flower.png'), message: "Congratulations! You have harvested a new flower. Smell the roses and then complete another task to plant a new seed!" }],
+        [{ image: require('../assets/Seedling.png'), message: "You have just planted a new seed. Complete another task and watch your plant grow." }],
+        [{ image: require('../assets/Germination.png'), message: "Your plant is growing well. Keep going!" }],
+        [{ image: require('../assets/Shoots.png'), message: "Look at those green leaves." }],
+        [{ image: require('../assets/Budding.png'), message: "One more task and your flower will bloom!" }],
+        [{ image: require('../assets/Blooming.png'), message: "Congratulations! You have harvested a new flower. When you're ready, complete another task to plant a new seed!" }],
     ]
 
 
