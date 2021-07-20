@@ -61,7 +61,7 @@ export default function TodoList() {
                 behavior={Platform.OS === "ios" ? "padding" : "height "}
                 style={styles.writeTaskWrapper}
             >
-                <TextInput style={styles.input} placeholder={"Write a task"} onChangeText={text => setTask(text)} ref={input => { this.textInput = input }}/>
+                <TextInput style={styles.input} placeholder={"Write a task"} onChangeText={text => setTask(text)} ref={input => { this.textInput = input }} />
                 <TouchableOpacity onPress={() => handleAddTask()}>
                     <View style={styles.addWrapper}>
                         <Text style={styles.addText}>+</Text>
