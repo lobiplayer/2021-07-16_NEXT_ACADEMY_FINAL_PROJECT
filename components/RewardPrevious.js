@@ -1,22 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Dimensions } from 'react-native';
 
 const FlowerPrevious = ({ previousRewards }) => {
 
 
     return (
+        <View style={styles.layout}>
 
-        <ScrollView horizontal >
-            {previousRewards.map((reward, index) => {
-                return <View style={styles.previousRewardCard}>
-                    
-                    <Text>{reward[0]}</Text>
-                    <Image source={reward[3]} style={styles.previousRewardImage}/>
-                </View>
+            <View >
+                <Text style={styles.pageTitle}>MY COLLECTION</Text>
+            </View>
 
-            }).reverse()}
-        </ScrollView>
+            <ScrollView horizontal >
+                {previousRewards.map((reward, index) => {
+                    return <View style={styles.previousRewardCard}>
+
+                        <Text>{reward[0]}</Text>
+                        <Image source={reward[3]} style={styles.previousRewardImage} />
+                    </View>
+
+                }).reverse()}
+            </ScrollView>
+        </View>
 
     )
 };
@@ -27,9 +33,18 @@ export default FlowerPrevious;
 // Styles
 
 const styles = StyleSheet.create({
+
+    layout: {
+        flex: 1,
+        height: "50%",
+        width: Dimensions.get('window').width,
+        marginBottom: "20%",
+    },
+
+
     previousRewardCard: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
         backgroundColor: 'white',
         margin: 16,
         borderRadius: 2,
