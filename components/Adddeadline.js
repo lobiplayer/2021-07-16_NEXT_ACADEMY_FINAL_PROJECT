@@ -40,7 +40,7 @@ const Adddeadline = () => {
                         onBlur={handleBlur('datetime')}
                         value={values.datetime}
                     />
-                    <Button onPress={handleSubmit} title="Submit" />
+                    <Button onPress={handleSubmit} title="Submit" color='#0000c8'/>
                 </View>
             )}
         </Formik>

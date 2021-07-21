@@ -7,3 +7,4 @@ native-calendar-strip
 @react-navigation/bottom-tabs
 react-native-screens
 react-native-elements
+react-native-modal

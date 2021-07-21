@@ -10,13 +10,13 @@ const ModalAdddeadline = () => {
     };
     return (
         <View>
-            <Button title="Add Deadline" onPress={toggleModal} />
+            <Button title="Add Deadline" onPress={toggleModal} color='#0000c8' />
             <Modal
                 isVisible={isModalVisible}>
                 <View style={styles.container}>
                     <Adddeadline />
                     <View>
-                        <Button title="Hide modal" onPress={toggleModal} />
+                        <Button title="Hide modal" onPress={toggleModal} color='#0000c8'/>
                     </View>
                 </View>
             </Modal>
