@@ -25,10 +25,12 @@ const ModalAdddeadline = () => {
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#E6E6FA',
+        backgroundColor: '#fdb913',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 20,
+        margin: 30,
+        borderRadius: 20,
     },
 });
 export default ModalAdddeadline;
