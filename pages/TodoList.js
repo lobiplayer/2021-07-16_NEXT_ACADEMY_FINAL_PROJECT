@@ -24,7 +24,6 @@ import {
 export default function TodoList() {
     const [task, setTask] = useState();
     const [taskItems, setTaskItems] = useState([]);
-    const itemsCopy = [...taskItems]
 
     // taking taskItems and appending it to an array //z
     const handleSubmit = () => {
@@ -36,13 +35,6 @@ export default function TodoList() {
         }
     }
 
-    // completing a task & deleting //
-    const deleteTask = (index) => {
-        itemsCopy.splice(index, 1)
-        setTaskItems(itemsCopy);
-    }
-
-
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -53,7 +45,7 @@ export default function TodoList() {
                         {
                             taskItems.map((item, index) => {
                                 return (
-                                    <Task key={index} text={item} deleteTask={deleteTask} index={index} />
+                                    <Task key={index} text={item}  index={index} taskItems={taskItems} setTaskItems={setTaskItems} />
                                 )
                             })
                         }
@@ -79,7 +71,6 @@ export default function TodoList() {
                     </View>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
-
         </View>
     );
 }

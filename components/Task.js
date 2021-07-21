@@ -2,17 +2,35 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Task = (props) => {
+    const taskItems = props.taskItems
+    const setTaskItems = props.setTaskItems
+    const itemsCopy = [...taskItems]
 
+    // completing a task & deleting //
+    const deleteTask = (index) => {
+        itemsCopy.splice(index, 1)
+        setTaskItems(itemsCopy);
+    }
+
+    const completeTask = (i) => {
+        if (itemsCopy[i].done === true) {
+            itemsCopy[i].done = false;
+            setTaskItems(itemsCopy);
+        } else {
+            itemsCopy[i].done = true;
+            setTaskItems(itemsCopy);
+        }
+    } 
 
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <TouchableOpacity onPress={() => completeTask()}>
+                <TouchableOpacity style={styles.tickIcon} onPress={() => completeTask(props.index)}>
                     <Text>☑️</Text>
                 </TouchableOpacity>
             </View>
             <Text style={styles.itemText}>{props.text}</Text>
-            <TouchableOpacity onPress={() => props.deleteTask(props.index)} >
+            <TouchableOpacity onPress={() => deleteTask(props.index)} >
                 <Text>🗑️</Text>
             </TouchableOpacity>
         </View>
@@ -37,6 +55,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
+    },
+    tickIcon: {
+        
     },
     itemLeft: {
         flexDirection: 'row',
