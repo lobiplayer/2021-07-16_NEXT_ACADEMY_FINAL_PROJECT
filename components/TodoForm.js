@@ -11,13 +11,15 @@ import {
 } from 'react-native';
 
 
-const TodoForm = ({ task, setTask, taskItems, setTaskItems }) => {
+const TodoForm = ({ todos, setTodos }) => {
     // taking taskItems and appending it to an array //
+    const [taskItems, setTaskItems] = useState('');
+
     const handleSubmit = () => {
-        if (task.trim().length != 0) {
+        if (taskItems.trim().length != 0) {
             Keyboard.dismiss();
-            setTaskItems([...taskItems, task])
-            setTask("")
+            setTodos([...todos, {id: todos.length + 1, task: taskItems, done: false}]);
+            setTaskItems("")
             textInput.clear();
         }
     }
@@ -32,7 +34,7 @@ const TodoForm = ({ task, setTask, taskItems, setTaskItems }) => {
                 <TextInput
                     style={styles.input}
                     placeholder={"Write a task"}
-                    onChangeText={text => setTask(text.trim())}
+                    onChangeText={text => setTaskItems(text.trim())}
                     ref={input => { textInput = input }}
                 />
                 {/* Button */}

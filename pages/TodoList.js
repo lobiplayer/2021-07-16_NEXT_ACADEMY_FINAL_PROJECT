@@ -9,37 +9,24 @@
 import React, { useState } from 'react';
 import Task from '../components/Task';
 import TodoForm from '../components/TodoForm';
-import {
-    StyleSheet,
-    Text,
-    View,
-    ScrollView
-} from 'react-native';
-
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function TodoList() {
-    const [task, setTask] = useState();
-    const [taskItems, setTaskItems] = useState([]);
-
+    const [todos, setTodos] = useState([
+        { id: 1, task: 'Walk the dog', done: false },
+        { id: 2, task: 'Water the flower', done: true },
+    ]
+    );
 
     return (
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.tasksWrapper}>
                     <Text style={styles.title}>Todo List</Text>
-                    <View style={styles.items}>
-                        {/* List of tasks created */}
-                        {
-                            taskItems.map((item, index) => {
-                                return (
-                                    <Task key={index} text={item} index={index} taskItems={taskItems} setTaskItems={setTaskItems} />
-                                )
-                            })
-                        }
-                    </View>
+                    <Task todos={todos} setTodos={setTodos} />
                 </View>
             </ScrollView>
-            <TodoForm task={task} setTask={setTask} taskItems={taskItems} setTaskItems={setTaskItems}/>
+            <TodoForm todos={todos} setTodos={setTodos} />
         </View>
     );
 }
@@ -57,10 +44,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-    },
-    items: {
-        marginTop: 30,
-        marginBottom: 35,
     },
     input: {
         paddingVertical: 15,
