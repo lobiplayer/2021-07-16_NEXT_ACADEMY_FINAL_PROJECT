@@ -9,7 +9,7 @@ const FlowerPrevious = ({ previousRewards }) => {
         <View style={styles.layout}>
 
             <View >
-                <Text style={styles.pageTitle}>HISTORY OF REWARDS</Text>
+                <Text style={styles.title}>HISTORY OF REWARDS</Text>
             </View>
 
             <ScrollView horizontal >
@@ -31,6 +31,8 @@ const FlowerPrevious = ({ previousRewards }) => {
 export default FlowerPrevious;
 
 
+    // #fdb913
+    // #0000c8
 // Styles
 
 const styles = StyleSheet.create({
@@ -39,23 +41,30 @@ const styles = StyleSheet.create({
         flex: 1,
         height: "50%",
         width: Dimensions.get('window').width,
-        marginBottom: "20%",
+        marginBottom: "15%",
+        backgroundColor: 'white',
+        marginTop: 10,
+        width: '100%',
+        padding: 15,
+        paddingVertical: 20,
+        borderRadius: 20,
     },
 
+    title: {
+        fontSize: 20,
+        color: '#0000c8',
+        fontWeight: '500',
+    },
 
     previousRewardCard: {
         width: 150,
-        height: 300,
-        backgroundColor: 'orange',
+        height: 200,
+        backgroundColor: '#fdb913',
         margin: 16,
-        borderRadius: 2,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowRadius: 1,
-        shadowOffset: { height: 1, width: 0.3 },
         justifyContent: 'center',
         alignItems: 'center',
         padding: 5,
+        borderRadius: 20,
 
     },
 
@@ -77,6 +86,7 @@ const styles = StyleSheet.create({
         height: 300,
         width: 300,
     },
+
 
 });
 
