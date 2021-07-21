@@ -21,13 +21,9 @@ const Rewards = () => {
         pointsToBloom: pointsToBloom, rewardImage: rewardInfo.rewardImage
     });
 
-    const [previousRewards, setpreviousRewards] = useState([
-        // [100, 'Welcome!', 200, require('../assets/Seed.png')],
-        // [100, 'Welcome!', 200, require('../assets/Seed.png')],
-    ])
+    const [previousRewards, setpreviousRewards] = useState([])
 
 
-    console.log(previousRewards)
     // Function to determine add points  
 
     function addPoints(e) {
@@ -51,7 +47,6 @@ const Rewards = () => {
             setTotalpoints(revisedTotalPoints)
         }
 
-        // rewardOutput(newPoints);
     }
 
 
