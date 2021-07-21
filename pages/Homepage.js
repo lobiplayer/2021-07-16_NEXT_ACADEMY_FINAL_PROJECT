@@ -29,9 +29,8 @@ const styles = StyleSheet.create({
     homepageheader: {
         color: 'white',
         fontWeight: "800",
-        fontSize: 40,
+        fontSize: 35,
         marginLeft: '5%',
-
 
     },
 

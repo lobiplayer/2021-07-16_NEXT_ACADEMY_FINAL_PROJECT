@@ -19,26 +19,34 @@ const RewardTotal = ({ totalPoints }) => {
 export default RewardTotal;
 
 
+    // #fdb913
+    // #0000c8
+
+
 // Styles
 
 const styles = StyleSheet.create({
 
     layout: {
-        marginBottom: "7%",
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         borderBottomColor: 'lightgray',
         borderBottomWidth: 1,
+        backgroundColor: '#0000c8',
+        height: 120,
+        width: '100%',
+        borderRadius: 15,
+        padding: 20,
     },
 
     // Style of the box holding the reward
     
 
     totalPointsBox: {
-        fontSize: 30,
+        fontSize: 40,
         height: 50,
         width: 200,
-        color: 'blue',
+        color: 'white',
         borderRadius: 20,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
@@ -47,14 +55,14 @@ const styles = StyleSheet.create({
     },
 
     totalPointsTitle: {
-        fontSize: 15,
+        fontSize: 20,
         height: 30,
         width: 200,
-        color: 'black',
+        color: '#fdb913',
         borderRadius: 20,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-
+        fontWeight: '500',
 
     }
 });
