@@ -16,7 +16,7 @@ import {
     View,
     TextInput,
     Platform,
-    Keyboard
+    Keyboard, 
 } from 'react-native';
 
 export default function TodoList() {

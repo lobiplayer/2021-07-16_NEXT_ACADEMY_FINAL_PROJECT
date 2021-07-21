@@ -7,7 +7,7 @@ import Navigation from './components/Navigation'
 export default function App() {
   return (
     <NavigationContainer >
-        <Navigation />
+      <Navigation />
     </NavigationContainer>
   );
 }
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
   },
-  
+
 });
 
