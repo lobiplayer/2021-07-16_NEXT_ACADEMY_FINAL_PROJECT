@@ -12,11 +12,7 @@ import TodoForm from '../components/TodoForm';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function TodoList() {
-    const [todos, setTodos] = useState([
-        { id: 1, task: 'Walk the dog', done: false },
-        { id: 2, task: 'Water the flower', done: true },
-    ]
-    );
+    const [todos, setTodos] = useState([]);
 
     return (
         <View style={styles.container}>
