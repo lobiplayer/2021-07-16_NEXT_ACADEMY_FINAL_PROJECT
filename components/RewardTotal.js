@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
-import RewardPrevious from './RewardPrevious';
 
 const RewardTotal = ({ totalPoints }) => {
 
