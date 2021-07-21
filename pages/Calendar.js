@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import Adddeadline from '../components/Adddeadline'
-import ModalAdddeadline from '../components/Modal'
+import ModalAdddeadline from '../components/ModalAdddeadline'
 
 export default function Calendar() {
     return (

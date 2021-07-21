@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0187365-8ca7-4888-b4b5-8a10e6989739" name="Default Changelist" comment="" />
+    <list default="true" id="d0187365-8ca7-4888-b4b5-8a10e6989739" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/components/Adddeadline.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Adddeadline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/TodoList.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,10 +40,11 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="111" y="121" width="1060" height="440" key="AVDManager" timestamp="1626646915452">
+    <state x="111" y="121" width="1060" height="440" key="AVDManager" timestamp="1626683839467">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="111" y="121" width="1060" height="440" key="AVDManager/0.0.1280.680/2304.-209.2048.1112@0.0.1280.680" timestamp="1626646915452" />
+    <state x="111" y="121" width="1060" height="440" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1626683839467" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1626603503501">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

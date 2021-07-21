@@ -1,16 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import React from "react";
+import { Text, View, TextInput, Button, Alert } from "react-native";
+import { useForm, Controller } from "react-hook-form";
 
+export default function Adddeadline() {
+    const { control, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
 
-export default function Calendar() {
     return (
-        <View style={styles.container}>
+        <View>
+            <Controller
+                control={control}
+                rules={{
+                    required: true,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                    />
+                )}
+                name="firstName"
+                defaultValue=""
+            />
+            {errors.firstName && <Text>This is required.</Text>}
 
+            <Controller
+                control={control}
+                rules={{
+                    maxLength: 100,
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                    />
+                )}
+                name="lastName"
+                defaultValue=""
+            />
+
+            <Button title="Submit" onPress={handleSubmit(onSubmit)} />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1 }
-});
