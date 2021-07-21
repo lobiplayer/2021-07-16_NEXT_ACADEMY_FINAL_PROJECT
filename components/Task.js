@@ -38,8 +38,6 @@ const Task = ({ todos, setTodos }) => {
                             </TouchableOpacity>
                         </View>
                     )
-
-                } else {
                 }
             }
             )}
@@ -47,19 +45,18 @@ const Task = ({ todos, setTodos }) => {
             {itemsCopy.map((list, index) => {
                 if (list.done === true) {
                     return (
-                        <View key={index} style={styles.item}>
+                        <View key={index} style={styles.completedItem}>
                             <View style={styles.itemLeft}>
                                 <TouchableOpacity style={styles.tickIcon} onPress={() => completeTask(index)}>
                                     <Text>☑️</Text>
                                 </TouchableOpacity>
                             </View>
-                            <Text style={styles.itemText}>{list.task}</Text>
+                            <Text style={styles.itemComplete}>{list.task}</Text>
                             <TouchableOpacity onPress={() => deleteTask(index)} >
                                 <Text>🗑️</Text>
                             </TouchableOpacity>
                         </View>
                     )
-                } else {
                 }
             }
             )}
@@ -82,7 +79,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     completedItem: {
-        backgroundColor: 'white',
+        backgroundColor: 'gray',
         padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
@@ -101,6 +98,9 @@ const styles = StyleSheet.create({
     itemText: {
         maxWidth: '80%',
     },
+    itemComplete: {
+        textDecorationLine: 'line-through',
+    }
 });
 
 export default Task;
