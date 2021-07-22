@@ -68,7 +68,7 @@ class PomodoroTimer extends React.Component {
       <View>
         <View style={styles.row}>
           <View style={styles.inputWrap}>
-            <Text style={styles.textStyle}>WorkTime</Text>
+            <Text style={styles.textStyle}>WORK TIME</Text>
             <TextInput
               style={styles.textStyle}
               keyboardType={"numeric"}
@@ -78,7 +78,7 @@ class PomodoroTimer extends React.Component {
             />
           </View>
           <View style={styles.inputWrap}>
-            <Text style={styles.textStyle}>BreakTime</Text>
+            <Text style={styles.textStyle}>BREAK TIME</Text>
             <TextInput
               style={styles.textStyle}
               keyboardType={"numeric"}
