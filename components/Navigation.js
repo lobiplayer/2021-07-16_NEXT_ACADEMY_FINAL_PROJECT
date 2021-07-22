@@ -12,13 +12,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const Bottom = createBottomTabNavigator();
 
-const spacingicons = '     '
-
 export default function Navigation() {
     return (
-        <Bottom.Navigator >
+        <Bottom.Navigator tabBarOptions = {{
+        activeTintColor: 'black',
+        inactiveTintColor: '#CCCCCC',
+                    }}>
+
             <Bottom.Screen name="Home" component={Homepage} 
                 options={{
+                    
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="home" color={color} size={30} />
                     ),

@@ -8,9 +8,9 @@ const RewardLoad = ({ addPoints, rewardOutput, updateOutput, points, newPoints }
 
     return (
         <View style={styles.layout}>
-            <Text> STATUS OF NEXT REWARD </Text>
+            <Text style={styles.title}> STATUS OF NEXT REWARD </Text>
             <View style={styles.layoutcenter}>
-                <Text>Points required to claim reward</Text>
+                <Text style={styles.currentPointsTitle}>Remaining points required to claim reward</Text>
                 <Text style={styles.currentPointsDisplay}> {points.pointsToBloom} </Text>
                 <Image source={points.rewardImage} style={styles.rewardPic} />
                 <Text style={styles.messageRewardsDisplay}>{points.message}</Text>
@@ -26,26 +26,34 @@ const RewardLoad = ({ addPoints, rewardOutput, updateOutput, points, newPoints }
 
 export default RewardLoad;
 
-
+    // #fdb913
+    // #0000c8
 // Styles
 
 const styles = StyleSheet.create({
 
     layout: {
-        marginBottom: "7%",
-        borderBottomColor: 'lightgray',
-        borderBottomWidth: 1,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 15,
+        marginTop: 10,
+    },
+
+    title: {
+        fontSize: 20,
+        color: '#0000c8',
+        fontWeight: '500',
     },
 
     layoutcenter: {
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: "5%",
+
     },
 
     // Style of the box holding the reward
     rewardBox: {
-
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -60,12 +68,23 @@ const styles = StyleSheet.create({
 
     currentPointsDisplay: {
         fontSize: 30,
-        color: '#D2691E',
+        color: '#fdb913',
         justifyContent: 'center',
         alignItems: 'center',
+        fontWeight: '600',
     },
 
     messageRewardsDisplay: {
+        fontSize: 16,
+        paddingTop: 10,
+        paddingBottom: 10,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+    },
+
+    currentPointsTitle: {
         fontSize: 16,
         paddingTop: 10,
         paddingBottom: 10,
