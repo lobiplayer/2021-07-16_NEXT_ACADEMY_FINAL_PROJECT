@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 20,
-        color: '#0000c8',
+        fontSize: 16,
+        color: 'black',
         fontWeight: '500',
     },
 
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
     },
 
     currentPointsDisplay: {
-        fontSize: 30,
-        color: '#fdb913',
+        fontSize: 33,
+        color: '#0000c8',
         justifyContent: 'center',
         alignItems: 'center',
         fontWeight: '600',
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 100,
+        color: '#0000c8',
     },
 
     currentPointsTitle: {
