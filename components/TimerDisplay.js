@@ -13,6 +13,7 @@ class TimerDisplay extends React.Component {
             ":" +
             (this.props.time % 60).toString().padStart(2, "0")}
         </Text>
+        <Text style={styles.textMin}>mins</Text>
       </View>
     );
   }
@@ -20,22 +21,33 @@ class TimerDisplay extends React.Component {
 
 export default TimerDisplay;
 
+    // #fdb913
+    // #0000c8
+
 const styles = StyleSheet.create({
   container: {
-    marginTop: "5%",
     marginBottom: "10%",
-    marginLeft: "8%",
-    marginRight: "8%",
-    padding: "20%",
-    borderColor: "white",
-    borderRadius: 80,
-    borderWidth: 5,
+    padding: "10%",
+    borderColor: "#fdb913",
+    borderRadius: 300,
+    borderWidth: 3,
     alignItems: "center",
-    backgroundColor: "#2b6ac2",
+    backgroundColor: "white",
+    height: 250,
+    width: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+  
   },
   textStyle: {
-    color: "white",
-    fontSize: 50,
+    color: "#0000c8",
+    fontSize: 45,
     fontWeight: "400",
   },
+
+  textMin: {
+    fontStyle: 'italic',
+    fontSize: 18,
+  },
+
 });

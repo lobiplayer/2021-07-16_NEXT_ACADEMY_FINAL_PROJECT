@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
 
     subtitleText: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'black',
         borderRadius: 18,
         justifyContent: 'flex-start',
