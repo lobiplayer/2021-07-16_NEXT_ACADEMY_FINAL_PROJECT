@@ -15,7 +15,7 @@ const Bottom = createBottomTabNavigator();
 export default function Navigation() {
     return (
         <Bottom.Navigator tabBarOptions = {{
-        activeTintColor: 'black',
+        activeTintColor: '#0000c8',
         inactiveTintColor: '#CCCCCC',
                     }}>
 
