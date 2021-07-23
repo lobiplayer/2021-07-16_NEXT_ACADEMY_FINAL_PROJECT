@@ -4,13 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './components/Navigation'
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 export default function App() {
   return (
-    <NavigationContainer >
-      <Navigation />
-    </NavigationContainer> 
+    // <NavigationContainer >
+    //   <Navigation />
+    // </NavigationContainer>
     // <Login />
+    <Signup />
   );
 }
 
