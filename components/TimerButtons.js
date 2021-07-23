@@ -10,16 +10,16 @@ class TimerButtons extends React.Component {
       return (
         <View style={styles.container}>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.buttonPause}
             onPress={this.props.pause}
           >
-            <Text style={styles.buttonText}>Pause</Text>
+            <Text style={styles.textPause}>PAUSE</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.buttonReset}
             onPress={this.props.reset}
           >
-            <Text style={styles.buttonText}>Reset</Text>
+            <Text style={styles.textReset}>RESET</Text>
           </TouchableOpacity>
         </View>
       );
@@ -27,10 +27,10 @@ class TimerButtons extends React.Component {
       return (
         <View style={styles.container}>
           <TouchableOpacity
-            style={styles.buttonStyle}
+            style={styles.buttonStart}
             onPress={this.props.play}
           >
-            <Text style={styles.buttonText}>Work!</Text>
+            <Text style={styles.textStart}>START</Text>
           </TouchableOpacity>
         </View>
       );
@@ -38,24 +38,59 @@ class TimerButtons extends React.Component {
   }
 }
 
+
+    // #fdb913
+    // #0000c8
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    marginLeft: 20,
     justifyContent: "space-evenly",
-    marginBottom: 20,
   },
-  buttonStyle: {
+  buttonStart: {
     alignItems: "center",
-    backgroundColor: "#2b6ac2",
-    padding: 30,
-    flexDirection: "row",
-    borderRadius: 80,
+    backgroundColor: "#fdb913",
+    padding: 15,
+    borderRadius: 10,
+    width: 120,
+    textAlign: 'center',
+    margin: 5,
+
   },
-  buttonText: {
-    color: "white",
-    fontSize: 25,
+  textStart: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: "300",
+  },
+  buttonPause: {
+    alignItems: "center",
+    backgroundColor: "#fdb913",
+    padding: 15,
+    borderRadius: 10,
+    width: 120,
+    textAlign: 'center',
+    margin: 5,
+
+  },
+  textPause: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: "300",
+  },
+  buttonReset: {
+    alignItems: "center",
+    backgroundColor: "lightgray",
+    padding: 15,
+    borderRadius: 10,
+    width: 120,
+    textAlign: 'center',
+    margin: 5,
+
+  },
+  textReset: {
+    color: "black",
+    fontSize: 16,
     fontWeight: "300",
   },
 });

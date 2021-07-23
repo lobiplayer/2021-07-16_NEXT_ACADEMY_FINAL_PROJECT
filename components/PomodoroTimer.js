@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, Text, View, TextInput } from "react-native";
+import { Platform, StyleSheet, Text, View, TextInput, KeyboardAvoidingView } from "react-native";
 import Timer from "./Timer";
 
 class PomodoroTimer extends React.Component {
@@ -62,60 +62,96 @@ class PomodoroTimer extends React.Component {
     }
   };
 
+
+
   render() {
     let time = this.handleTime();
+    const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0
+
     return (
-      <View>
-        <View style={styles.row}>
-          <View style={styles.inputWrap}>
-            <Text style={styles.textStyle}>WORK TIME</Text>
-            <TextInput
-              style={styles.textStyle}
-              keyboardType={"numeric"}
-              defaultValue={"" + this.state.workTime}
-              placeholder="workTime in mins"
-              onChangeText={this.handleWorkTime}
-            />
-          </View>
-          <View style={styles.inputWrap}>
-            <Text style={styles.textStyle}>BREAK TIME</Text>
-            <TextInput
-              style={styles.textStyle}
-              keyboardType={"numeric"}
-              defaultValue={"" + this.state.breakTime}
-              placeholder="breakTime in mins"
-              onChangeText={this.handleBreakTime}
-            />
-          </View>
-        </View>
+      <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
         <Timer
           intervalType={this.state.intervalType}
           Oncomplete={this.handleTimerCompleted}
           period={time}
+          style={styles.container}
         />
-      </View>
+        
+        <Text style={styles.settingsText} >SETTINGS</Text>
+        <View style={styles.row}>
+          <View style={styles.inputWrap}>
+            <Text style={styles.textStyle}>WORK TIME</Text>
+            <TextInput
+              style={styles.inputStyle}
+              keyboardType={"numeric"}
+              defaultValue={"" + this.state.workTime}
+              placeholder="25"
+              onChangeText={this.handleWorkTime}
+            />
+            <Text style={styles.textStyle}>mins</Text>
+          </View>
+          <View style={styles.inputWrap}>
+            <Text style={styles.textStyle}>BREAK TIME</Text>
+            <TextInput
+              style={styles.inputStyle}
+              keyboardType={"numeric"}
+              defaultValue={"" + this.state.breakTime}
+              placeholder="5"
+              onChangeText={this.handleBreakTime}
+            />
+            <Text style={styles.textStyle}>mins</Text>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 export default PomodoroTimer;
 
 const styles = StyleSheet.create({
+  container:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
   row: {
     flex: 1,
     flexDirection: "row",
+    marginHorizontal: '2%',
   },
   inputWrap: {
     flex: 1,
-    borderColor: "#cccccc",
-    borderBottomWidth: 1,
-    marginBottom: 10,
-  },
-  textStyle: {
-    fontSize: 25,
-    fontWeight: "500",
-    letterSpacing: 1.5,
-    fontFamily: Platform.OS == "android" ? "notoserif" : "system",
-    marginTop: 40,
+    marginHorizontal: '2%',
+    borderRadius: 20,
+    backgroundColor: 'lightgray',
     padding: 20,
   },
+  textStyle: {
+    fontSize: 16,
+    fontWeight: "500",
+    paddingBottom: 5,
+    color: 'gray', 
+  },
+
+  inputStyle: {
+    fontSize: 22,
+    color: 'black',
+    backgroundColor: 'white',
+    padding: 3,
+    marginVertical: 5,
+    borderRadius: 10,
+  },
+
+  settingsText: {
+    marginVertical: '2%',
+    marginHorizontal: '5%',
+    fontSize: 16,
+    fontWeight: "500",
+
+  },
+
 });
+
+
+// // #fdb913
+// // #0000c8
