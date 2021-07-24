@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Task = ({ todos, setTodos }) => {
@@ -17,6 +17,24 @@ const Task = ({ todos, setTodos }) => {
         } else {
             itemsCopy[i].done = true;
             setTodos(itemsCopy);
+                fetch("http://192.168.1.120:5000/add_rewardslist", {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        points: '100',
+                        user_id: '2',
+                        task_completed: 'Completed task on ' + Date(),
+                    }),
+
+                }).then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    return Promise.reject(response);
+                }).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.warn('Something went wrong.', error);
+                }) 
         }
     }
 
