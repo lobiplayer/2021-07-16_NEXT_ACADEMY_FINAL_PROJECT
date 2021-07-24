@@ -72,6 +72,9 @@ export default function Calendar() {
                 selected={thisDay}
                 renderItem={renderItem}
                 theme={{
+                    agendaTodayColor: '#0000c8',
+                    agendaDayTextColor: 'gray',
+                    agendaDayNumColor: 'gray',
                     backgroundColor: '#ffffff',
                     calendarBackground: '#ffffff',
                     textSectionTitleColor: '#0000c8',
@@ -95,7 +98,7 @@ export default function Calendar() {
                     textDayHeaderFontWeight: '300',
                     textDayFontSize: 16,
                     textMonthFontSize: 16,
-                    textDayHeaderFontSize: 16
+                    textDayHeaderFontSize: 16,
                 }}
 
             />

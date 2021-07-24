@@ -24,18 +24,19 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TimerHeader
           running={this.state.running}
           intervalType={this.props.intervalType}
         />
-        <TimerDisplay time={this.state.time} />
+        <TimerDisplay time={this.state.time}  />
         <TimerButtons
           play={this.handlePlay}
           pause={this.handlePause}
           reset={this.handleReset}
           running={this.state.running}
         />
+
       </View>
     );
   }
@@ -83,6 +84,8 @@ class Timer extends React.Component {
 
 export default Timer;
 
+
+
 const styles = StyleSheet.create({
   textStyle: {
     color: "#2b6ac2",
@@ -92,5 +95,17 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS == "android" ? "notoserif" : "system",
     marginTop: 40,
     padding: 20,
+
   },
+
+  container: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: '5%',
+    margin: '5%',
+    borderRadius: 15,
+
+  }
+
+
 });

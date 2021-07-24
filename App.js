@@ -3,15 +3,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './components/Navigation'
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Welcome from './pages/Welcome';
 
 export default function App() {
   return (
     <NavigationContainer >
       <Navigation />
     </NavigationContainer>
+    // <Login />
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
