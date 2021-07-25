@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
 
     previousRewardCard: {
         width: 150,
-        height: 200,
+        height: 230,
         backgroundColor: '#fdb913',
         margin: 16,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 5,
+        padding: 10,
         borderRadius: 20,
 
     },
