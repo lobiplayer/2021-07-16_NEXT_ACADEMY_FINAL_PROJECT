@@ -99,6 +99,7 @@ const Rewards = () => {
     return (
 
         <ScrollView contentContainerStyle={styles.layout}>
+            <Text style={styles.header}>REWARDS</Text>
             <RewardTotal totalPoints={totalPoints} />
             <RewardLoad rewardOutput={rewardOutput} previouslist={previouslist} totalPoints={totalPoints} maxPoints = {maxPoints}/>
             <RewardPrevious previouslist={previouslist} rewardOutput={rewardOutput} />
@@ -123,9 +124,19 @@ const styles = StyleSheet.create({
         flexGrow: 3,
         marginTop: "15%",
         margin: "5%",
+    
     },
 
-
+    header: {
+        height: 30,
+        width: '100%',
+        paddingHorizontal: 20,
+        fontSize: 25,
+        fontWeight: '500',
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginBottom: '5%',
+    },
 });
 
 
