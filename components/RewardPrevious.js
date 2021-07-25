@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Dimensions } from 'react-native';
 
-const FlowerPrevious = ({ previousRewards, previouslist, currentstate, rewardOutput }) => {
+const FlowerPrevious = ({ previouslist, rewardOutput }) => {
 
     console.log(previouslist)
 
@@ -60,12 +60,14 @@ const styles = StyleSheet.create({
 
     previousRewardCard: {
         width: 150,
-        height: 230,
+        
+        overflow: 'scroll',
         backgroundColor: '#fdb913',
         margin: 16,
-        justifyContent: 'center',
         alignItems: 'center',
+        textAlignVertical: 'top',
         padding: 10,
+        paddingVertical: 15,
         borderRadius: 20,
 
     },

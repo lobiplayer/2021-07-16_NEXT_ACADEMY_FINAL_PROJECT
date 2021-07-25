@@ -3,18 +3,20 @@ import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
 
 
-const RewardLoad = ({ previouslist, currentstate, rewardOutput }) => {
+const RewardLoad = ({ previouslist, totalPoints, rewardOutput, maxPoints }) => {
 
     console.log(previouslist)
 
     const lastitem = previouslist.length - 1
+
+    const points_required = maxPoints - (totalPoints % maxPoints)
  
     return (
         <View style={styles.layout}>
             <Text style={styles.title}> STATUS OF NEXT REWARD </Text>
             <View style={styles.layoutcenter}>
                 <Text style={styles.currentPointsTitle}>Remaining points required to claim reward</Text>
-                <Text style={styles.currentPointsDisplay}> {previouslist[lastitem][0].points} </Text>
+                <Text style={styles.currentPointsDisplay}> {points_required} </Text>
                 <Image source={rewardOutput(previouslist[lastitem][0].state)[0]} style={styles.rewardPic} />
                 <Text style={styles.messageRewardsDisplay}>{rewardOutput(previouslist[lastitem][0].state)[1]}</Text>
                 {/* <Pressable onPress={(e) => { addPoints(e); rewardOutput(newPoints); updateOutput(e) }} style={styles.button}> */}

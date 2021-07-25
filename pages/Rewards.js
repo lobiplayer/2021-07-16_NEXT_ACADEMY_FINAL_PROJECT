@@ -19,9 +19,17 @@ const Rewards = () => {
         }));
     }, []);
 
+    const [totalPoints, setTotalpoints] = useState(0)
 
+    useEffect(() => {
+        fetch("http://192.168.1.120:5000/rewardslist_totalpoints").then(response => response.json().then(data => {
 
-    const [totalPoints, setTotalpoints] = useState(1000)
+            console.log(data);
+            setTotalpoints(data.total_points);
+
+        }));
+    }, []);
+
 
 
     const maxPoints = 500
@@ -92,8 +100,8 @@ const Rewards = () => {
 
         <ScrollView contentContainerStyle={styles.layout}>
             <RewardTotal totalPoints={totalPoints} />
-            <RewardLoad rewardOutput={rewardOutput} previouslist={previouslist} totalPoints={totalPoints} />
-            <RewardPrevious previouslist={previouslist} rewardOutput={rewardOutput}/>
+            <RewardLoad rewardOutput={rewardOutput} previouslist={previouslist} totalPoints={totalPoints} maxPoints = {maxPoints}/>
+            <RewardPrevious previouslist={previouslist} rewardOutput={rewardOutput} />
 
 
         </ScrollView>
