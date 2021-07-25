@@ -17,26 +17,25 @@ const Task = ({ todos, setTodos }) => {
         } else {
             itemsCopy[i].done = true;
             setTodos(itemsCopy);
-            fetch("http://192.168.1.120:5000/add_rewardslist", {
-                method: "POST",
+            const response = fetch('http://192.168.1.120:5000/add_rewardslist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     points: '100',
-                    user_id: '2',
-                    task_completed: 'Completed task on ' + Date(),
-                }),
-
-            }).then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                return Promise.reject(response);
-            }).then(function (data) {
-                console.log(data);
-            }).catch(function (error) {
-                console.warn('Something went wrong.', error);
+                    user_id: '3',
+                    task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
+                    '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                })
             })
+
+            if (response.ok) {
+                console.log('response work')
+            }
         }
     }
+
 
     return (
         <View style={styles.items}>
