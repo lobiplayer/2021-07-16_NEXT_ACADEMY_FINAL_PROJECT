@@ -8,9 +8,10 @@ const Homepagekeytask = () => {
     return (
         <View style={styles.layout}>
 
-            <View style={styles.subtitle}>
-            <Text style={styles.subtitleText}> Work on these tasks today? </Text>
+            <View >
+                <Text style={styles.title}>COMPLETE SOME TASKS TODAY!</Text>
             </View>
+
             <ScrollView horizontal>
             <View style={styles.pageBox}>
             </View>
@@ -33,11 +34,24 @@ export default Homepagekeytask;
 const styles = StyleSheet.create({
 
     layout: {
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
         flex: 1,
+        height: "50%",
+        width: Dimensions.get('window').width,
+        marginBottom: "15%",
+        backgroundColor: 'white',
         marginTop: 10,
+        width: '100%',
+        padding: 15,
+        paddingVertical: 20,
+        borderRadius: 20,
 
+    },
+
+    title: {
+        fontSize: 16,
+        color: 'black',
+        fontWeight: '500',
+        marginBottom: 10,
     },
 
 

@@ -4,14 +4,12 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Homepagekeytask from '../components/Homepagekeytask';
 import Homepagekeydates from '../components/Homepagekeydates';
 import Homepagerewards from '../components/Homepagerewards';
-
+import Homepageheader from '../components/Homepageheader';
 
 export default function Homepage() {
     return (
         <ScrollView contentContainerStyle={styles.layout}>
-            <View style={styles.homepageheaderbox}>
-            <Text style={styles.homepageheader} >Hi Philip, welcome to your workspace. </Text>
-            </View>
+            <Homepageheader />
             <Homepagekeytask />
             <Homepagekeydates />
             <Homepagerewards />
@@ -23,7 +21,9 @@ export default function Homepage() {
 
 const styles = StyleSheet.create({
     layout: {
-        flexGrow: 3,
+            flexGrow: 3,
+            marginTop: "15%",
+            margin: "5%",
     },
 
     homepageheader: {

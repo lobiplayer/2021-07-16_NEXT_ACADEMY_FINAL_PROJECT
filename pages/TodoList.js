@@ -18,7 +18,7 @@ export default function TodoList() {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.tasksWrapper}>
-                    <Text style={styles.title}>Todo List</Text>
+                    <Text style={styles.title}>TODO LIST</Text>
                     <Task todos={todos} setTodos={setTodos} />
                 </View>
             </ScrollView>
@@ -34,12 +34,19 @@ const styles = StyleSheet.create({
     },
 
     tasksWrapper: {
-        paddingTop: 80,
+        marginTop: '15%',
         paddingHorizontal: 20,
     },
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+       
+            height: 30,
+            width: '100%',
+            paddingHorizontal: 20,
+            fontSize: 25,
+            fontWeight: '500',
+            justifyContent: 'center',
+            textAlign: 'center',
+    
     },
     input: {
         paddingVertical: 15,
