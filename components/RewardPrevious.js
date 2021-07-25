@@ -2,7 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Dimensions } from 'react-native';
 
-const FlowerPrevious = ({ previousRewards }) => {
+const FlowerPrevious = ({ previouslist, rewardOutput }) => {
+
+    console.log(previouslist)
+
 
 
     return (
@@ -13,12 +16,11 @@ const FlowerPrevious = ({ previousRewards }) => {
             </View>
 
             <ScrollView horizontal >
-                {previousRewards.map((reward, index) => {
+                {previouslist.map((reward, index) => {
                     return <View style={styles.previousRewardCard}>
-
-                        <Text>+100 points</Text>
-                        <Image source={reward[3]} style={styles.previousRewardImage} />
-                        <Text>Completed 30 mins of Pomodoro Timer</Text>
+                        <Text>+ {reward[0].points} points</Text>
+                        <Image source={rewardOutput(reward[0].state)[0]} style={styles.previousRewardImage} />
+                        <Text>{reward[0].task_completed}</Text>
                     </View>
 
                 }).reverse()}
@@ -58,12 +60,14 @@ const styles = StyleSheet.create({
 
     previousRewardCard: {
         width: 150,
-        height: 200,
+        
+        overflow: 'scroll',
         backgroundColor: '#fdb913',
         margin: 16,
-        justifyContent: 'center',
         alignItems: 'center',
-        padding: 5,
+        textAlignVertical: 'top',
+        padding: 10,
+        paddingVertical: 15,
         borderRadius: 20,
 
     },

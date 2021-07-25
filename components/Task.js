@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Task = ({ todos, setTodos }) => {
@@ -17,8 +17,25 @@ const Task = ({ todos, setTodos }) => {
         } else {
             itemsCopy[i].done = true;
             setTodos(itemsCopy);
+            const response = fetch('http://192.168.1.120:5000/add_rewardslist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    points: '100',
+                    user_id: '3',
+                    task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
+                    '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                })
+            })
+
+            if (response.ok) {
+                console.log('response work')
+            }
         }
     }
+
 
     return (
         <View style={styles.items}>
@@ -66,7 +83,7 @@ const Task = ({ todos, setTodos }) => {
 
 const styles = StyleSheet.create({
     items: {
-        marginTop: 30,
+        marginTop: 20,
         marginBottom: 35,
     },
     item: {
@@ -77,15 +94,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
+        
     },
     completedItem: {
-        backgroundColor: 'gray',
+        backgroundColor: 'lightgray',
         padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
+
     },
     tickIcon: {
 
@@ -94,12 +113,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         flexWrap: 'wrap',
+        
     },
     itemText: {
         maxWidth: '80%',
+        color: '#0000c8',
     },
     itemComplete: {
         textDecorationLine: 'line-through',
+        color: 'gray',
     }
 });
 
