@@ -12,7 +12,7 @@ export default function App() {
     <NavigationContainer >
       <Navigation />
     </NavigationContainer>
-    // <Signup />
+    // <Login />
   );
 }
 
