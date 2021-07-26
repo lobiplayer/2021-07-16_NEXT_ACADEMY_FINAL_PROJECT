@@ -1,15 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, {useContext, useState} from 'react';
+import { StyleSheet, Text, View, ScrollView, Button } from 'react-native';
 import Homepagekeytask from '../components/Homepagekeytask';
 import Homepagekeydates from '../components/Homepagekeydates';
 import Homepagerewards from '../components/Homepagerewards';
 import Homepageheader from '../components/Homepageheader';
+import { LoginContext } from '../LoginContext';
 
-export default function Homepage() {
+const Homepage = () => {
+
+
+    const [token, setToken] = useContext(LoginContext)
+
+    const logout = (e) => {
+        e.preventDefault();
+        setToken("")
+        console.log(token)
+        console.log("token")
+    }
+
+
     return (
         <ScrollView contentContainerStyle={styles.layout}>
             <Homepageheader />
+            <Button title="Log Out" onPress={(e) => logout(e)}/>
+            <Text>The current user is {token}</Text>
             <Homepagekeytask />
             <Homepagekeydates />
             <Homepagerewards />
@@ -17,6 +32,8 @@ export default function Homepage() {
         </ScrollView>
     );
 }
+
+export default Homepage;
 
 
 const styles = StyleSheet.create({
