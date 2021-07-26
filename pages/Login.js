@@ -26,7 +26,7 @@ import {
     TextLink,
     TextLinkContent
 } from '../components/styles';
-import { View, Button } from 'react-native';
+import { View, Button, KeyboardAvoidingView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from '../LoginContext';
 
@@ -98,7 +98,8 @@ const Login = () => {
 
     return (
   
-            <KeyboardAvoidingWrapper>
+        <KeyboardAvoidingWrapper >
+            <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={Platform.OS === "ios" ? "2" : "0"} >
                 <StyledContainer>
                     <StatusBar style="dark" />
                     <InnerContainer>
@@ -162,6 +163,7 @@ const Login = () => {
                         </Formik>
                     </InnerContainer>
                 </StyledContainer >
+            </KeyboardAvoidingView>
             </KeyboardAvoidingWrapper>
        
     );

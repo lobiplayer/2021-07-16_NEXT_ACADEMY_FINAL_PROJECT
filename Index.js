@@ -28,7 +28,7 @@ export default function Index() {
         {(typeof token) != 'number' ?
           // :
           <Stack.Navigator headerMode='none'>
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="SignUp" component={Signup} />
           </Stack.Navigator>
           :
