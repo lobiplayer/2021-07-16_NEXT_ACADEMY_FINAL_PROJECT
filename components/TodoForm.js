@@ -16,9 +16,23 @@ const TodoForm = ({ todos, setTodos }) => {
     const [taskItems, setTaskItems] = useState('');
 
     const handleSubmit = () => {
+        async () => {
+            console.log(taskItems , "task items")
+            const response = await fetch('//192.168.0.160:5000/add_todo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: { "todo_text": taskItems}
+            })
+
+            if (response.ok) {
+                console.log('response work')
+            }
+        }
         if (taskItems.trim().length != 0) {
             Keyboard.dismiss();
-            setTodos([...todos, {id: todos.length + 1, task: taskItems, done: false}]);
+            setTodos([...todos, { todo_text: taskItems, is_done: false }]);
             setTaskItems("")
             textInput.clear();
         }

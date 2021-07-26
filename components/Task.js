@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Task = ({ todos, setTodos }) => {
-    const itemsCopy = [...todos]
+    console.log( todos, "read this")
+    let itemsCopy = [...todos]
+
 
     // completing a task & deleting //
     const deleteTask = (index) => {
@@ -11,11 +13,11 @@ const Task = ({ todos, setTodos }) => {
     }
 
     const completeTask = (i) => {
-        if (itemsCopy[i].done === true) {
-            itemsCopy[i].done = false;
+        if (itemsCopy[i].is_done === true) {
+            itemsCopy[i].is_done = false;
             setTodos(itemsCopy);
         } else {
-            itemsCopy[i].done = true;
+            itemsCopy[i].is_done = true;
             setTodos(itemsCopy);
             const response = fetch('http://192.168.1.120:5000/add_rewardslist', {
                 method: 'POST',
@@ -41,7 +43,7 @@ const Task = ({ todos, setTodos }) => {
         <View style={styles.items}>
             {/* List of tasks created */}
             {itemsCopy.map((list, index) => {
-                if (list.done === false) {
+                if (list.is_done === false) {
                     return (
                         <View key={index} style={styles.item}>
                             <View style={styles.itemLeft}>
@@ -49,7 +51,7 @@ const Task = ({ todos, setTodos }) => {
                                     <Text>☑️</Text>
                                 </TouchableOpacity>
                             </View>
-                            <Text style={styles.itemText}>{list.task}</Text>
+                            <Text style={styles.itemText}>{list.todo_text}</Text>
                             <TouchableOpacity onPress={() => deleteTask(index)} >
                                 <Text>🗑️</Text>
                             </TouchableOpacity>
@@ -60,7 +62,7 @@ const Task = ({ todos, setTodos }) => {
             )}
 
             {itemsCopy.map((list, index) => {
-                if (list.done === true) {
+                if (list.is_done === true) {
                     return (
                         <View key={index} style={styles.completedItem}>
                             <View style={styles.itemLeft}>
@@ -68,7 +70,7 @@ const Task = ({ todos, setTodos }) => {
                                     <Text>☑️</Text>
                                 </TouchableOpacity>
                             </View>
-                            <Text style={styles.itemComplete}>{list.task}</Text>
+                            <Text style={styles.itemComplete}>{list.todo_text}</Text>
                             <TouchableOpacity onPress={() => deleteTask(index)} >
                                 <Text>🗑️</Text>
                             </TouchableOpacity>
