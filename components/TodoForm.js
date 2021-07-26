@@ -16,21 +16,40 @@ const TodoForm = ({ todos, setTodos }) => {
     const [taskItems, setTaskItems] = useState('');
 
     const handleSubmit = () => {
+        async () => {
+            console.log(taskItems , "task items")
+            const response = await fetch('//192.168.0.160:5000/add_todo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: { "todo_text": taskItems}
+            })
+
+            if (response.ok) {
+                console.log('response work')
+            }
+        }
         if (taskItems.trim().length != 0) {
             Keyboard.dismiss();
-            setTodos([...todos, {id: todos.length + 1, task: taskItems, done: false}]);
+            setTodos([...todos, { todo_text: taskItems, is_done: false }]);
             setTaskItems("")
             textInput.clear();
         }
     }
 
+
+
+    // const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0
+
+    // return (
+    //     <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
+
     return (
-        <View>
-            {/* inputing a task/write a task */}
-            < KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height "}
-                style={styles.writeTaskWrapper}
-            >
+
+        <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={Platform.OS === "ios" ? "10" : "0"} style={styles.writeTaskWrapper} >
+
+            <View style={styles.container}>
                 <TextInput
                     style={styles.input}
                     placeholder={"Write a task"}
@@ -43,8 +62,9 @@ const TodoForm = ({ todos, setTodos }) => {
                         <Text style={styles.addText}>+</Text>
                     </View>
                 </TouchableOpacity>
-            </KeyboardAvoidingView >
-        </View>
+            </View>
+        </KeyboardAvoidingView >
+
     )
 }
 
@@ -75,7 +95,18 @@ const styles = StyleSheet.create({
         borderColor: '#C0C0C0',
         borderWidth: 1,
     },
-    addText: {},
+    addText: {
+        fontSize: 25,
+        color: '#0000c8',
+    },
+
+    container: {
+        flexDirection: 'row',
+    }
+
+    // #fdb913
+    // #0000c8
+
 });
 
 export default TodoForm;

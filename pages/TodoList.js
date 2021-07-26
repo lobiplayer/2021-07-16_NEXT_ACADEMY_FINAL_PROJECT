@@ -6,13 +6,22 @@
 // 6. Map out the array created to list tasks created
 // 7. Deleting a task after completion
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Task from '../components/Task';
 import TodoForm from '../components/TodoForm';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function TodoList() {
     const [todos, setTodos] = useState([]);
+
+
+    useEffect(() => {
+        fetch("http://192.168.0.160:5000/todos").then(response => response.json().then(data => {
+
+            setTodos(data.todos);
+        }));
+    }, []);
+
 
     return (
         <View style={styles.container}>
@@ -38,8 +47,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+
+        height: 30,
+        width: '100%',
+        paddingHorizontal: 20,
+        fontSize: 25,
+        fontWeight: '500',
+        justifyContent: 'center',
+        textAlign: 'center',
+
     },
     input: {
         paddingVertical: 15,
