@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
@@ -32,6 +32,7 @@ import { View, TouchableOpacity, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
+import { LoginContext } from '../LoginContext';
 
 // colors
 const { brand, darkLight, primary } = Colors;
@@ -58,6 +59,31 @@ const Signup = () => {
 
     const nav = useNavigation();
 
+    const [token, setToken] = useContext(LoginContext)
+
+    const createAccount = (fullName, email, password) => {
+
+        fetch('http://192.168.1.120:5000/add_user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: fullName,
+                date_of_birth: '01-01-2020',
+                password: password,
+                email: email,
+            })
+        }).then(response => response.json().then(data => {
+            setToken(data.user_id);
+            console.log(token)
+            console.log("loggedin")
+            console.log(typeof token)
+            // storeData(data.user_id)
+        }))
+
+    }
+
     return (
         <KeyboardAvoidingWrapper>
             <StyledContainer>
@@ -81,6 +107,7 @@ const Signup = () => {
                         initialValues={{ fullName: '', email: '', dateOfBirth: '', password: '', confirmPassword: '' }}
                         onSubmit={(values) => {
                             console.log(values);
+                            createAccount(values.fullName, values.email, values.password);
                         }}
                     >
                         {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -91,7 +118,7 @@ const Signup = () => {
                                     icon="person"
                                     placeholder="John Smith"
                                     placeholderTextColor={darkLight}
-                                    onChange={handleChange('fullName')}
+                                    onChangeText={handleChange('fullName')}
                                     onBlur={handleBlur('fullName')}
                                     value={values.fullName}
                                 />
@@ -101,7 +128,7 @@ const Signup = () => {
                                     icon="mail"
                                     placeholder="johnsmith@email.com"
                                     placeholderTextColor={darkLight}
-                                    onChange={handleChange('email')}
+                                    onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
                                     value={values.email}
                                     keyboardType="email-address"
@@ -111,7 +138,7 @@ const Signup = () => {
                                     icon="calendar"
                                     placeholder="YYYY - MM - DD"
                                     placeholderTextColor={darkLight}
-                                    onChange={handleChange('dateOfBirth')}
+                                    onChangeText={handleChange('dateOfBirth')}
                                     onBlur={handleBlur('dateOfBirth')}
                                     value={dob ? dob.toDateString() : ''}
                                     isDate={true}
