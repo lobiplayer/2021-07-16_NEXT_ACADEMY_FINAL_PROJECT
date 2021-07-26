@@ -42,6 +42,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 15,
         marginTop: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
 
     title: {

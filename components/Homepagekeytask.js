@@ -8,8 +8,8 @@ const Homepagekeytask = () => {
     return (
         <View style={styles.layout}>
 
-            <View >
-                <Text style={styles.title}>COMPLETE SOME TASKS TODAY!</Text>
+            <View style={styles.subtitle}>
+                <Text style={styles.subtitleText}>COMPLETE SOME TASKS TODAY!</Text>
             </View>
 
             <ScrollView horizontal>
@@ -37,14 +37,20 @@ const styles = StyleSheet.create({
         flex: 1,
         height: "50%",
         width: Dimensions.get('window').width,
-        marginBottom: "15%",
+        marginBottom: "3%",
         backgroundColor: 'white',
         marginTop: 10,
         width: '100%',
         padding: 15,
         paddingVertical: 20,
         borderRadius: 20,
-
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
 
     title: {
@@ -56,12 +62,12 @@ const styles = StyleSheet.create({
 
 
     subtitleText: {
-        fontSize: 16,
-        color: 'black',
+        fontSize: 15,
+        color: 'white',
         borderRadius: 18,
         justifyContent: 'flex-start',
         fontWeight: "500",
-
+        fontStyle: 'italic',
     },
     // #fdb913
     // #0000c8
@@ -72,18 +78,16 @@ const styles = StyleSheet.create({
         borderColor: '#0000c8',
         borderBottomColor: '#fdb913',
         width: "100%",
-        backgroundColor: 'white',
-        paddingVertical: 5,
-        marginLeft: '-10%',
-        paddingLeft: '15%',
+        backgroundColor: 'black',
+        paddingVertical: 7,
         borderRadius: 20,
-        marginVertical: 20,
-
+        marginBottom: 10,
+        alignItems: 'center',
     },
 
     pageBox: {
-        height: 200,
-        width: 200, 
+        height: 120,
+        width: 200,
         backgroundColor: 'lightgray',
         borderRadius: 20,
         marginHorizontal: 10,
