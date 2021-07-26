@@ -11,7 +11,7 @@ const FlowerPrevious = ({ previouslist, rewardOutput }) => {
     return (
         <View style={styles.layout}>
 
-            <View >
+            <View>
                 <Text style={styles.title}>HISTORY OF REWARDS</Text>
             </View>
 
