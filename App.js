@@ -8,9 +8,9 @@ import { LoginProvider, LoginContext } from './LoginContext';
 export default function App() {
 
   return (
+
     <LoginProvider>
       <Index />
     </LoginProvider>
-
   );
 }

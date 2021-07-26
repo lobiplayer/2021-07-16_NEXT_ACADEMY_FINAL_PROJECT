@@ -1,50 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import CalendarStrip from 'react-native-calendar-strip';
-import Adddeadline from '../components/Adddeadline';
-import ModalAdddeadline from '../components/ModalAdddeadline';
+import { addDays, format } from 'date-fns';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { Card, Avatar } from 'react-native-paper';
-import moment from 'moment';
+import ModalAdddeadline from '../components/ModalAdddeadline';
 
+type Item = {
+    name: string;
+    subject: string;
+};
 
-const timeToString = (time) => {
-    const date = new Date(time);
-    return date.toISOString().split('T')[0];
-}
+const Calendar: React.FC = () => {
 
-const thisDay = moment().format("YYYY-MM-DD");
+    const [request, setRequest] = useState([])
 
+    // useEffect(() => {
+    //     fetch("http://192.168.0.152:5000/deadlines").then(response => response.json().then(data => {
+    //         setItems(data.deadlines);
+    //     })
+    //     );
+    // }, []);
 
-export default function Calendar() {
-    const [items, setItems] = useState({});
+    const [items, setItems] = useState < { [key: string]: Item[]} > (
+        {
+        '2021-07-27' : [{name: 'test 1', subject: 'english'}]
+    });
 
-    const loadItems = (day) => {
-        setTimeout(() => {
-            for (let i = -15; i < 85; i++) {
-                const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-                const strTime = timeToString(time);
-                if (!items[strTime]) {
-                    items[strTime] = [];
-                    const numItems = Math.floor(Math.random() * 3 + 1);
-                    for (let j = 0; j < numItems; j++) {
-                        items[strTime].push({
-                            name: 'Mathematics',
-                            height: Math.max(50, Math.floor(Math.random() * 150))
-                        });
-                    }
-                }
-            }
-            const newItems = {};
-            Object.keys(items).forEach(key => {
-                newItems[key] = items[key];
-            });
-            setItems(newItems)
-        }, 1000);
-    };
+       useEffect(() => {
+        fetch("http://192.168.0.152:5000/deadlines").then(response => response.json().then(data => {
+            console.log(data.deadlines)
+            const newObject = {}
+            data.deadlines.map( deadline => {
+                console.log(deadline.date)
+                newObject[deadline.deadline_date] = [{ name: deadline.description, subject: deadline.subject}]
+            })
+            console.log("safdsafadsf", newObject)
+            setItems(newObject);
+        })
+        );
+    }, []);
 
-    const renderItem = (item) => {
+    const renderItem = (item: Item) => {
         return (
             <TouchableOpacity style={{ marginRight: 10, marginTop: 17 }}>
                 <Card style={{ backgroundColor: '#fdb913' }}>
@@ -56,6 +52,7 @@ export default function Calendar() {
                                 alignItems: 'center',
                             }}>
                             <Text>{item.name}</Text>
+                            <Text>{item.subject}</Text>
                             <Avatar.Icon size={40} icon="math-compass" color='#fdb913' backgroundColor='#0000c8' />
                         </View>
                     </Card.Content>
@@ -65,12 +62,10 @@ export default function Calendar() {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safe}>
             <Agenda
-                items={items}
-                loadItemsForMonth={loadItems}
-                selected={thisDay}
-                renderItem={renderItem}
+            items={items}
+            renderItem={renderItem}
                 theme={{
                     agendaTodayColor: '#0000c8',
                     agendaDayTextColor: 'gray',
@@ -100,15 +95,24 @@ export default function Calendar() {
                     textMonthFontSize: 16,
                     textDayHeaderFontSize: 16,
                 }}
-
             />
             <ModalAdddeadline />
-
-
-        </View>
+        </SafeAreaView>
     );
-}
+};
 
 const styles = StyleSheet.create({
-    container: { flex: 1 }
+    safe: {
+        flex: 1,
+    },
+    itemContainer: {
+        backgroundColor: 'white',
+        margin: 5,
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+    },
 });
+
+export default Calendar;
