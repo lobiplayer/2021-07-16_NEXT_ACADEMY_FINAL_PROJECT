@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
+import { useNavigation } from '@react-navigation/native';
 // icons
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 
@@ -25,7 +26,7 @@ import {
     TextLink,
     TextLinkContent
 } from '../components/styles';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Button } from 'react-native';
 
 // DateTimePicker
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -54,6 +55,8 @@ const Signup = () => {
     const showDatePicker = () => {
         setShow(true);
     }
+
+    const nav = useNavigation();
 
     return (
         <KeyboardAvoidingWrapper>
@@ -151,7 +154,7 @@ const Signup = () => {
                                 <ExtraView>
                                     <ExtraText>Already have an account?</ExtraText>
                                     <TextLink>
-                                        <TextLinkContent>  Login</TextLinkContent>
+                                        <Button title='Login' onPress={() => nav.navigate('Login')} />
                                     </TextLink>
                                 </ExtraView>
                             </StyledFormArea>
