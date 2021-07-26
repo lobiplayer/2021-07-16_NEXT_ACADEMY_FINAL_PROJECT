@@ -69,9 +69,10 @@ const Login = () => {
                 email: email,
             })
         }).then(response => response.json().then(data => {
-            console.log(data);
             setToken(data.user_id);
             console.log(token)
+            console.log("loggedin")
+            console.log(typeof token)
             // storeData(data.user_id)
         }))
 
