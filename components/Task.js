@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Task = ({ todos, setTodos }) => {
@@ -27,8 +27,8 @@ const Task = ({ todos, setTodos }) => {
                 body: JSON.stringify({
                     points: '100',
                     user_id: '3',
-                    task_completed: 'Completed task ' + itemsCopy[i].todo_text + ' on ' + new Date().getDate() +
-                        '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                    task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
+                    '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
                 })
             })
 
@@ -37,7 +37,6 @@ const Task = ({ todos, setTodos }) => {
             }
         }
     }
-
 
 
     return (
@@ -86,7 +85,7 @@ const Task = ({ todos, setTodos }) => {
 
 const styles = StyleSheet.create({
     items: {
-        marginTop: 30,
+        marginTop: 20,
         marginBottom: 35,
     },
     item: {
@@ -97,15 +96,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
+        
     },
     completedItem: {
-        backgroundColor: 'gray',
+        backgroundColor: 'lightgray',
         padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
+
     },
     tickIcon: {
 
@@ -114,12 +115,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         flexWrap: 'wrap',
+        
     },
     itemText: {
         maxWidth: '80%',
+        color: '#0000c8',
     },
     itemComplete: {
         textDecorationLine: 'line-through',
+        color: 'gray',
     }
 });
 

@@ -39,16 +39,14 @@ const TodoForm = ({ todos, setTodos }) => {
     }
 
 
-
     // const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0
 
     // return (
     //     <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
 
     return (
-
-        <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={Platform.OS === "ios" ? "10" : "0"} style={styles.writeTaskWrapper} >
-
+       
+            <KeyboardAvoidingView behavior ='position' keyboardVerticalOffset = {Platform.OS === "ios" ? "10" : "0"} style={styles.writeTaskWrapper} >
             <View style={styles.container}>
                 <TextInput
                     style={styles.input}
@@ -63,8 +61,8 @@ const TodoForm = ({ todos, setTodos }) => {
                     </View>
                 </TouchableOpacity>
             </View>
-        </KeyboardAvoidingView >
-
+            </KeyboardAvoidingView >
+    
     )
 }
 
@@ -72,27 +70,27 @@ const styles = StyleSheet.create({
     writeTaskWrapper: {
         bottom: 35,
         width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     input: {
         paddingVertical: 15,
         paddingHorizontal: 15,
         backgroundColor: '#FFF',
         borderRadius: 250,
-        borderColor: '#C0C0C0',
+        borderColor: '#0000c8',
         borderWidth: 1,
         width: 250,
+        marginHorizontal: 10,
     },
     addWrapper: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#FFF',
+        width: 50,
+        height: 50,
+        backgroundColor: '#fdb913',
         borderRadius: 60,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: '#C0C0C0',
+        borderColor: '#fdb913',
         borderWidth: 1,
     },
     addText: {
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     }
 
-    // #fdb913
+        // #fdb913
     // #0000c8
 
 });

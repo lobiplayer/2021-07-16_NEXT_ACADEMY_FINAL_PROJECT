@@ -14,7 +14,8 @@ const timeToString = (time) => {
     return date.toISOString().split('T')[0];
 }
 
-const thisDay = moment().subtract(10, 'days').calendar();
+const thisDay = moment().format("YYYY-MM-DD");
+
 
 export default function Calendar() {
     const [items, setItems] = useState({});
@@ -71,21 +72,24 @@ export default function Calendar() {
                 selected={thisDay}
                 renderItem={renderItem}
                 theme={{
+                    agendaTodayColor: '#0000c8',
+                    agendaDayTextColor: 'gray',
+                    agendaDayNumColor: 'gray',
                     backgroundColor: '#ffffff',
                     calendarBackground: '#ffffff',
-                    textSectionTitleColor: '#b6c1cd',
+                    textSectionTitleColor: '#0000c8',
                     textSectionTitleDisabledColor: '#d9e1e8',
                     selectedDayBackgroundColor: '#fdb913',
                     selectedDayTextColor: '#ffffff',
-                    todayTextColor: '#fdb913',
-                    dayTextColor: '#2d4150',
-                    textDisabledColor: '#d9e1e8',
+                    todayTextColor: '#0000c8',
+                    dayTextColor: '#0000c8',
+                    textDisabledColor: '#0000c8',
                     dotColor: '#fdb913',
                     selectedDotColor: '#ffffff',
                     arrowColor: 'orange',
                     disabledArrowColor: '#d9e1e8',
-                    monthTextColor: 'blue',
-                    indicatorColor: 'blue',
+                    monthTextColor: '#0000c8',
+                    indicatorColor: '#0000c8',
                     textDayFontFamily: 'monospace',
                     textMonthFontFamily: 'monospace',
                     textDayHeaderFontFamily: 'monospace',
@@ -94,7 +98,7 @@ export default function Calendar() {
                     textDayHeaderFontWeight: '300',
                     textDayFontSize: 16,
                     textMonthFontSize: 16,
-                    textDayHeaderFontSize: 16
+                    textDayHeaderFontSize: 16,
                 }}
 
             />
