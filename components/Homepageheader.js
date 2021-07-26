@@ -1,13 +1,37 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
+import { LoginContext } from '../LoginContext';
 
 const Homepageheader = () => {
+
+
+    const [token, setToken] = useContext(LoginContext)
+    const [username, setUsername] = useState("")
+
+    
+
+        fetch('http://192.168.1.120:5000/user_info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
+                
+            })
+        }).then(response => response.json().then(data => {
+            console.log(data.user_info)
+            setUsername(data.user_info[0]);
+        }))
+
+
+
 
     return (
         <View style={styles.layout}>
             <Text style={styles.title}>WELCOME TO YOUR WORKSPACE,</Text>
-            <Text style={styles.name}>PHILIP </Text>
+            <Text style={styles.name}>{username}</Text>
 
         </View>
 
@@ -28,8 +52,8 @@ export default Homepageheader;
 const styles = StyleSheet.create({
 
     layout: {
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
+        alignItems: 'center',
+        justifyContent: 'center',
         borderBottomColor: 'lightgray',
         borderBottomWidth: 1,
         backgroundColor: '#fdb913',
@@ -37,6 +61,14 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: 15,
         padding: 20,
+        marginBottom: '3%',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 1.5,
     },
 
     // Style of the box holding the reward
@@ -47,8 +79,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'black',
         borderRadius: 20,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        alignItems: 'center',
+        justifyContent: 'center',
         fontWeight: '500',
 
     },

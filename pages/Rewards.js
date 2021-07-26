@@ -1,17 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Header } from 'react-native';
 import RewardLoad from '../components/RewardLoad';
 import RewardPrevious from '../components/RewardPrevious';
 import RewardTotal from '../components/RewardTotal';
+import { LoginContext } from '../LoginContext';
 
 const Rewards = () => {
 
+    const [token, setToken] = useContext(LoginContext)
 
     const [previouslist, setPreviouslist] = useState([[{points: 100, state: "Seedling", task_completed: "Testing", user_id: 1}]])
 
     useEffect( () => {
-        fetch("http://192.168.1.120:5000/rewardslist").then(response => response.json().then(data => {
+        fetch("http://192.168.1.120:5000/rewardslist", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
+
+            })
+    }).then(response => response.json().then(data => {
 
             console.log(data);
             setPreviouslist(data.rewardslist);
@@ -22,13 +33,23 @@ const Rewards = () => {
     const [totalPoints, setTotalpoints] = useState(0)
 
     useEffect(() => {
-        fetch("http://192.168.1.120:5000/rewardslist_totalpoints").then(response => response.json().then(data => {
+        fetch("http://192.168.1.120:5000/rewardslist_totalpoints", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
+
+            })
+        }).then(response => response.json().then(data => {
 
             console.log(data);
             setTotalpoints(data.total_points);
 
         }));
     }, []);
+
 
 
 
@@ -48,7 +69,7 @@ const Rewards = () => {
         const output = []
 
         if (state == "Seedling") {
-            
+
             output.push(data[0][0].image)
             output.push(data[0][0].message)
         }
@@ -75,8 +96,8 @@ const Rewards = () => {
         }
 
         else {
-            output.push(data[0][0].image)
-            output.push(data[0][0].message)
+            output.push(data[5][0].image)
+            output.push(data[5][0].message)
 
         }
 
@@ -90,6 +111,7 @@ const Rewards = () => {
         [{ image: require('../assets/Shoots.png'), message: "Look at those green leaves." }],
         [{ image: require('../assets/Budding.png'), message: "One more task and your flower will bloom!" }],
         [{ image: require('../assets/Blooming.png'), message: "Congratulations! You have harvested a new flower. When you're ready, complete another task to plant a new seed!" }],
+        [{ image: require('../assets/PacketofSeeds.png'), message: 'Plant your first flower by completing a task or a Pomodoro timer.' }],
     ]
 
 

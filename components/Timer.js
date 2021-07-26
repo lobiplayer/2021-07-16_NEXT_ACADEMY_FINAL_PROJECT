@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, Text, View, TextInput } from "react-native";
+import { Platform, StyleSheet, Text, View, TextInput, Image } from "react-native";
 import TimerHeader from "./TimerHeader";
 import TimerDisplay from "./TimerDisplay";
 import TimerButtons from "./TimerButtons";
@@ -30,6 +30,9 @@ class Timer extends React.Component {
           intervalType={this.props.intervalType}
         />
         <TimerDisplay time={this.state.time}  />
+        <View style={styles.picture}>
+          <Image source={require('../assets/Snail.png')} style={styles.picture} />
+        </View>
         <TimerButtons
           play={this.handlePlay}
           pause={this.handlePause}
@@ -105,6 +108,13 @@ const styles = StyleSheet.create({
     margin: '5%',
     borderRadius: 15,
 
+  },
+
+  picture: {
+    height:95,
+    width: 130,
+    marginTop: '-20%',
+    marginRight: '-30%',
   }
 
 

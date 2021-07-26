@@ -26,7 +26,7 @@ const Task = ({ todos, setTodos }) => {
                 },
                 body: JSON.stringify({
                     points: '100',
-                    user_id: '3',
+                    user_id: '1',
                     task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
                     '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
                 })

@@ -37,6 +37,13 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: 15,
         padding: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
     },
 
     // Style of the box holding the reward
