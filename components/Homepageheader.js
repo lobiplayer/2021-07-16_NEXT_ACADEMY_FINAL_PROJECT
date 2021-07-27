@@ -11,7 +11,7 @@ const Homepageheader = () => {
 
     
 
-        fetch('/user_info', {
+    fetch('http://192.168.1.120:5000/user_info', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     
     title: {
-        fontSize: 20,
+        fontSize: 17,
         color: 'black',
         borderRadius: 20,
         alignItems: 'center',
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontSize: 30,
+        fontSize: 28,
         color: '#0000c8',
         fontWeight: '800',
     },

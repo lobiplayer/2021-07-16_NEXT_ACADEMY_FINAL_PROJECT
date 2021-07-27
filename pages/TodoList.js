@@ -6,21 +6,41 @@
 // 6. Map out the array created to list tasks created
 // 7. Deleting a task after completion
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Task from '../components/Task';
 import TodoForm from '../components/TodoForm';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { LoginContext } from '../LoginContext';
 
 export default function TodoList() {
     const [todos, setTodos] = useState([]);
+    const [token, setToken] = useContext(LoginContext)
 
 
     useEffect(() => {
-        fetch("/todos").then(response => response.json().then(data => {
+        fetch("http://192.168.0.160:5000/todos", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
 
+            })
+        }).then(response => response.json().then(data => {
+
+            console.log(data);
             setTodos(data.todos);
+
         }));
     }, []);
+
+    // useEffect(() => {
+    //     fetch("http://192.168.0.160:5000/todos").then(response => response.json().then(data => {
+
+    //         setTodos(data.todos);
+    //     }));
+    // }, []);
 
 
     return (

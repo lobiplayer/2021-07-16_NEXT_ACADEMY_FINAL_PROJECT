@@ -50,6 +50,7 @@ const Calendar: React.FC = () => {
     });
 
        useEffect(() => {
+
            fetch("http://192.168.0.152:5000/deadlines", {
                method: 'POST',
                headers: {
@@ -60,6 +61,7 @@ const Calendar: React.FC = () => {
 
                })
            }).then(response => response.json().then(data => {
+
             console.log(data.deadlines)
             const newObject = {}
             data.deadlines.map( deadline => {

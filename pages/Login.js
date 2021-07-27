@@ -26,7 +26,7 @@ import {
     TextLink,
     TextLinkContent
 } from '../components/styles';
-import { View, Button, KeyboardAvoidingView } from 'react-native';
+import { View, Button, KeyboardAvoidingView, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from '../LoginContext';
 
@@ -59,7 +59,9 @@ const Login = () => {
 
     const login = (email, password) => {
 
-        fetch('http://192.168.0.152:5000/user_login', {
+
+        fetch('http://192.168.0.160:5000/user_login', {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
