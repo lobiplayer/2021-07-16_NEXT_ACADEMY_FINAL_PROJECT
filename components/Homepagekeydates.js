@@ -1,32 +1,52 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
-
+import { LoginContext } from '../LoginContext';
 
 const Homepagekeydates = () => {
+
+    const [latestDeadline, setLatestdeadline] = useState([])
+    const [token, setToken] = useContext(LoginContext)
+
+
+    useEffect(() => {
+        fetch("http://192.168.1.120:5000/deadline_homepage", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
+
+            })
+        }).then(response => response.json().then(data => {
+
+            console.log(data);
+            setLatestdeadline(data.deadline_homepage);
+
+        }));
+    }, []);
 
     return (
         <View style={styles.layout}>
 
             <View style={styles.subtitle}>
-                <Text style={styles.subtitleText}> THESE DATES ARE COMING UP </Text>
+                <Text style={styles.subtitleText}>YOUR UPCOMING KEY DATES</Text>
             </View>
-            <ScrollView>
-                <View style={styles.display}>
-                    <View style={styles.circle}>
-                    </View>
-                    <View style={styles.pageBox}>
-                    </View>
-                </View>
-                <View style={styles.display}>
-                    <View style={styles.circle}>
-                    </View>
-                    <View style={styles.pageBox}>
-                    </View>
-                </View>
-                
-            </ScrollView>
 
+            <ScrollView horizontal>
+
+                {latestDeadline.map((deadline, index) => {
+                    return <View >
+                        <View>
+                        <Text style={styles.circle}> {deadline.date.toUpperCase()}</Text>
+                        </View>
+                        <Text style={styles.boxText}>{deadline.subject}</Text>
+                        <Text style={styles.boxText}>{deadline.description}</Text>
+                        
+                    </View>
+                })}
+            </ScrollView>
         </View>
 
     )
