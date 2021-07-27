@@ -11,6 +11,7 @@ import Task from '../components/Task';
 import TodoForm from '../components/TodoForm';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { LoginContext } from '../LoginContext';
+import Todobunny from '../components/Todobunny';
 
 export default function TodoList() {
     const [todos, setTodos] = useState([]);
@@ -51,6 +52,7 @@ export default function TodoList() {
                     <Task todos={todos} setTodos={setTodos} />
                 </View>
             </ScrollView>
+            <Todobunny />
             <TodoForm todos={todos} setTodos={setTodos} />
         </View>
     );

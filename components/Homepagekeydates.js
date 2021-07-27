@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 
     line: {
         height: 100,
-        width: 10,
+        width: 7,
         backgroundColor: '#fdb913',
         marginTop: '-5%',
         justifyContent: 'center',

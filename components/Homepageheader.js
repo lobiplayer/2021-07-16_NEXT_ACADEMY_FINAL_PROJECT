@@ -30,7 +30,7 @@ const Homepageheader = () => {
 
     return (
         <View style={styles.layout}>
-            <Text style={styles.title}>WELCOME TO YOUR WORKSPACE,</Text>
+            <Text style={styles.title}>WELCOME TO YOUR GARDONE,</Text>
             <Text style={styles.name}>{username}</Text>
 
         </View>
