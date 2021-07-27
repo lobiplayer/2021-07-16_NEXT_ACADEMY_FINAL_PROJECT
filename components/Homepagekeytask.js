@@ -17,6 +17,7 @@ const Homepagekeytask = () => {
             },
             body: JSON.stringify({
                 user_id: token,
+                date_today: new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
 
             })
         }).then(response => response.json().then(data => {

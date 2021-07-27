@@ -60,7 +60,7 @@ const Rewards = () => {
     //     message: rewardInfo.rewardMessage, pointsToBloom: pointsToBloom, rewardImage: rewardInfo.rewardImage
     // });
 
-    const [rewardInfo, setRewardinfo] = useState({ rewardImage: require('../assets/PacketofSeeds.png'), rewardMessage: 'Plant your first flower by completing a task or a Pomodoro timer.' });
+    const [rewardInfo, setRewardinfo] = useState({ rewardImage: require('../assets/PacketofSeeds.png'), rewardMessage: 'Plant your first flower by completing a task.' });
 
     // Function to determine which state of flower to present  
 
