@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     TouchableOpacity,
     KeyboardAvoidingView,
@@ -9,34 +9,39 @@ import {
     Platform,
     Keyboard,
 } from 'react-native';
+import { LoginContext } from '../LoginContext';
+
 
 
 const TodoForm = ({ todos, setTodos }) => {
     // taking taskItems and appending it to an array //
     const [taskItems, setTaskItems] = useState('');
+    const [token, setToken] = useContext(LoginContext)
+
 
     const handleSubmit = () => {
-        async () => {
-            console.log(taskItems , "task items")
-            const response = await fetch('/add_todo', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: { "todo_text": taskItems}
-            })
-
-            if (response.ok) {
-                console.log('response work')
-            }
-        }
         if (taskItems.trim().length != 0) {
-            Keyboard.dismiss();
-            setTodos([...todos, { todo_text: taskItems, is_done: false }]);
-            setTaskItems("")
-            textInput.clear();
+                fetch("http://192.168.0.160:5000/add_todo", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_id: token,
+                        todo_text: taskItems,
+                    })
+                }).then(response => response.json().then(data => {
+
+                    console.log(data);
+                    Keyboard.dismiss();
+                    setTodos([...todos, { todo_text: taskItems, is_done: false }]);
+                    setTaskItems("")
+                    textInput.clear();
+
+                }));
         }
     }
+
 
 
     // const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0
@@ -45,8 +50,8 @@ const TodoForm = ({ todos, setTodos }) => {
     //     <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
 
     return (
-       
-            <KeyboardAvoidingView behavior ='position' keyboardVerticalOffset = {Platform.OS === "ios" ? "10" : "0"} style={styles.writeTaskWrapper} >
+
+        <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={Platform.OS === "ios" ? "10" : "0"} style={styles.writeTaskWrapper} >
             <View style={styles.container}>
                 <TextInput
                     style={styles.input}
@@ -61,8 +66,8 @@ const TodoForm = ({ todos, setTodos }) => {
                     </View>
                 </TouchableOpacity>
             </View>
-            </KeyboardAvoidingView >
-    
+        </KeyboardAvoidingView >
+
     )
 }
 
@@ -102,7 +107,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     }
 
-        // #fdb913
+    // #fdb913
     // #0000c8
 
 });

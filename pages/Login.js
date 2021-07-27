@@ -59,7 +59,7 @@ const Login = () => {
 
     const login = (email, password) => {
 
-        fetch('http://192.168.1.120:5000/user_login', {
+        fetch('http://192.168.0.160:5000/user_login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
