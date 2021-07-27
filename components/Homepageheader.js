@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     
     title: {
-        fontSize: 20,
+        fontSize: 17,
         color: 'black',
         borderRadius: 20,
         alignItems: 'center',
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontSize: 30,
+        fontSize: 28,
         color: '#0000c8',
         fontWeight: '800',
     },

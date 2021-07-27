@@ -26,7 +26,7 @@ import {
     TextLink,
     TextLinkContent
 } from '../components/styles';
-import { View, Button, KeyboardAvoidingView } from 'react-native';
+import { View, Button, KeyboardAvoidingView, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from '../LoginContext';
 
