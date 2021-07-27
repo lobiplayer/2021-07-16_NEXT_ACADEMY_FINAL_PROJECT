@@ -27,7 +27,7 @@ const Calendar: React.FC = () => {
     });
 
        useEffect(() => {
-        fetch("/deadlines").then(response => response.json().then(data => {
+           fetch("http://192.168.1.120:5000/deadlines").then(response => response.json().then(data => {
             console.log(data.deadlines)
             const newObject = {}
             data.deadlines.map( deadline => {

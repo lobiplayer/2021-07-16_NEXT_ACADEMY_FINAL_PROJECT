@@ -16,7 +16,7 @@ export default function TodoList() {
 
 
     useEffect(() => {
-        fetch("/todos").then(response => response.json().then(data => {
+        fetch("http://192.168.1.120:5000/todos").then(response => response.json().then(data => {
 
             setTodos(data.todos);
         }));

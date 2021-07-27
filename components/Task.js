@@ -19,7 +19,7 @@ const Task = ({ todos, setTodos }) => {
         } else {
             itemsCopy[i].is_done = true;
             setTodos(itemsCopy);
-            const response = fetch('/add_rewardslist', {
+            const response = fetch('http://192.168.1.120:5000/add_rewardslist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
