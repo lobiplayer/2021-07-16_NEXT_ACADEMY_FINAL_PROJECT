@@ -18,7 +18,7 @@ const TodoForm = ({ todos, setTodos }) => {
     const handleSubmit = () => {
         async () => {
             console.log(taskItems , "task items")
-            const response = await fetch('//192.168.0.160:5000/add_todo', {
+            const response = await fetch('/add_todo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
