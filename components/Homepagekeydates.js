@@ -17,6 +17,7 @@ const Homepagekeydates = () => {
             },
             body: JSON.stringify({
                 user_id: token,
+                date_today: new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
 
             })
         }).then(response => response.json().then(data => {
@@ -37,13 +38,17 @@ const Homepagekeydates = () => {
             <ScrollView horizontal>
 
                 {latestDeadline.map((deadline, index) => {
-                    return <View >
-                        <View>
-                        <Text style={styles.circle}> {deadline.date.toUpperCase()}</Text>
-                        </View>
-                        <Text style={styles.boxText}>{deadline.subject}</Text>
-                        <Text style={styles.boxText}>{deadline.description}</Text>
+                    return <View style={styles.display}>
                         
+                        <View style={styles.line}></View>
+                        <View style={styles.circle}>
+                        <Text style={styles.date}> {deadline.date.toUpperCase()}</Text>
+                        </View>
+
+                        <View style={styles.rectangle}>
+                        <Text style={styles.subject}>{deadline.subject.toUpperCase()}</Text>
+                        <Text style={styles.description}>{deadline.description}</Text>
+                        </View>
                     </View>
                 })}
             </ScrollView>
@@ -107,7 +112,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         paddingVertical: 7,
         borderRadius: 20,
-        marginBottom: 10,
         alignItems: 'center',
     },
 
@@ -122,14 +126,49 @@ const styles = StyleSheet.create({
         height: 80,
         width: 80,
         borderRadius: 100,
-        backgroundColor: 'lightgray',
-        marginRight: 10,
+        backgroundColor: '#0000c8',
+        marginRight: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+    },
+
+    line: {
+        height: 100,
+        width: 10,
+        backgroundColor: '#fdb913',
+        marginTop: '-5%',
+        justifyContent: 'center',
     },
 
     display: {
         flexDirection: 'row',
         margin: 10,
     },
+
+    rectangle: {
+        width: 200,
+        height: 80,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    subject: {
+        fontSize: 14,
+        fontWeight: '500',
+
+    },
+
+    description: {
+        fontSize: 14,
+
+    },
+
+    date: {
+        color: 'white',
+        fontSize: 15,
+    }
+
 
 });
 
