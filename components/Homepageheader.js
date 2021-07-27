@@ -11,7 +11,7 @@ const Homepageheader = () => {
 
     
 
-        fetch('http://192.168.1.120:5000/user_info', {
+        fetch('/user_info', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

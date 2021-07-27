@@ -13,7 +13,7 @@ const Rewards = () => {
     const [previouslist, setPreviouslist] = useState([[{points: 100, state: "Seedling", task_completed: "Testing", user_id: 1}]])
 
     useEffect( () => {
-        fetch("http://192.168.1.120:5000/rewardslist", {
+        fetch("/rewardslist", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const Rewards = () => {
     const [totalPoints, setTotalpoints] = useState(0)
 
     useEffect(() => {
-        fetch("http://192.168.1.120:5000/rewardslist_totalpoints", {
+        fetch("/rewardslist_totalpoints", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -59,12 +59,12 @@ const Adddeadline = () => {
                     />
                     <Button title="Submit" color='#0000c8' onPress = { async () => {
                         console.log(values)
-                        const response = await fetch("http://192.168.0.152:5000/add_deadline", {
+                        const response = await fetch("/add_deadline", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: values
+                            body: JSON.stringify(values)
                     })
 
                         if (response.ok) {
