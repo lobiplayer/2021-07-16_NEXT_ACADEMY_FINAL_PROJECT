@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Text, View, TextInput, Button, Alert, Form } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Formik } from 'formik';
+import { LoginContext } from '../LoginContext';
 
 
 const Adddeadline = () => {
     // const { control, handleSubmit, formState: { errors } } = useForm();
     // const onSubmit = data => console.log(data);
+
+    const [token, setToken] = useContext(LoginContext)
 
     const [description, setdescription] = useState('');
     const [subject, setSubject] = useState('');
@@ -28,7 +31,7 @@ const Adddeadline = () => {
 
     return (
         <Formik
-            initialValues={{ description: '', subject: '', date: '' }}
+            initialValues={{ description: '', subject: '', date: ''}}
             onSubmit={values => sendData(values)}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -58,8 +61,9 @@ const Adddeadline = () => {
                         onChange={e => setdate(e.target.value)}
                     />
                     <Button title="Submit" color='#0000c8' onPress = { async () => {
+                        values.user_id = token
                         console.log(values)
-                        const response = await fetch("/add_deadline", {
+                        const response = await fetch("http://192.168.0.152:5000/add_deadline", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

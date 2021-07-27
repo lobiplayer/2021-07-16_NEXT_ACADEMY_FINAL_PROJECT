@@ -63,7 +63,7 @@ const Signup = () => {
 
     const createAccount = (fullName, email, password) => {
 
-        fetch('/add_user', {
+        fetch('http://192.168.0.152:5000/add_user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
