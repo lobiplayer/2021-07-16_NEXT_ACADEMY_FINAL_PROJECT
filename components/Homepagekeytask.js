@@ -1,9 +1,32 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
-
+import { LoginContext } from '../LoginContext';
 
 const Homepagekeytask = () => {
+
+    const [latestTodo, setLatesttodo] = useState([])
+    const [token, setToken] = useContext(LoginContext)
+
+
+    useEffect(() => {
+        fetch("http://192.168.1.120:5000/todolist_homepage", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: token,
+
+            })
+        }).then(response => response.json().then(data => {
+
+            console.log(data);
+            setLatesttodo(data.todolist_homepage);
+
+        }));
+    }, []);
+
 
     return (
         <View style={styles.layout}>
@@ -13,12 +36,13 @@ const Homepagekeytask = () => {
             </View>
 
             <ScrollView horizontal>
-            <View style={styles.pageBox}>
-            </View>
-                <View style={styles.pageBox}>
-                </View>
-                <View style={styles.pageBox}>
-                </View>
+
+                {latestTodo.map((todo, index) => {
+                    return <View style={styles.pageBox}>
+                        <Text style={styles.boxText}>{todo.todo_text.toUpperCase()}</Text>
+                        <Text style={styles.boxDate}>Targeted completion date: {todo.deadline_id}</Text>
+                    </View>
+                })}
             </ScrollView>
         </View>
 
@@ -46,8 +70,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         shadowColor: "#000",
         shadowOffset: {
-        width: 0,
-        height: 1,
+            width: 0,
+            height: 1,
         },
         shadowOpacity: 0.20,
         shadowRadius: 1.41,
@@ -62,7 +86,7 @@ const styles = StyleSheet.create({
 
 
     subtitleText: {
-        fontSize: 15,
+        fontSize: 14,
         color: 'white',
         borderRadius: 18,
         justifyContent: 'flex-start',
@@ -86,12 +110,28 @@ const styles = StyleSheet.create({
     },
 
     pageBox: {
-        height: 120,
-        width: 200,
-        backgroundColor: 'lightgray',
-        borderRadius: 20,
+        height: 100,
+        width: 150,
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 10,
         marginHorizontal: 10,
-    }
+        padding: 10,
+        justifyContent: 'center',
+    },
+
+    boxText: {
+        color: '#0000c8',
+        fontWeight: '500',
+        fontSize: 14,
+    },
+
+    boxDate: {
+        color: 'gray',
+        fontStyle: 'italic',
+        fontSize: 12,
+    },
 
 });
 
