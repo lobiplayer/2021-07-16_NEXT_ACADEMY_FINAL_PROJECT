@@ -19,7 +19,7 @@ const Homepagekeydates = () => {
             },
             body: JSON.stringify({
                 user_id: token,
-                date_today: new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                date_today: new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate(),
 
             })
         }).then(response => response.json().then(data => {
