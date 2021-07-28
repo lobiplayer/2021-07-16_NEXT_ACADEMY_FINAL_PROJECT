@@ -39,7 +39,7 @@ const Rewards = () => {
 
     useFocusEffect(
         React.useCallback(() => {
-        fetch("http://192.168.1.120:5000/rewardslist_totalpoints", {
+            fetch("https://whispering-wildwood-06588.herokuapp.com/rewardslist_totalpoints", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
