@@ -106,7 +106,7 @@ const Login = () => {
                     <StatusBar style="dark" />
                     <InnerContainer>
                         <PageLogo resizeMode='cover' source={require('./../assets/Shoots.png')} />
-                        <PageTitle>WorkSpace</PageTitle>
+                        <PageTitle>Gardone</PageTitle>
                         <SubTitle>Account Login</SubTitle>
                         <Formik
                             initialValues={{ useremail: '', password: '' }}
@@ -150,10 +150,11 @@ const Login = () => {
                                         <ButtonText>Login</ButtonText>
                                     </StyledButton>
                                     <Line />
-                                    <StyledButton google={true} onPress={handleSubmit}>
+                                    {/* sign in with google */}
+                                    {/* <StyledButton google={true} onPress={handleSubmit}>
                                         <Fontisto name="google" color={primary} size={25} />
                                         <ButtonText google={true}>Sign in with Google</ButtonText>
-                                    </StyledButton>
+                                    </StyledButton> */}
                                     <ExtraView>
                                         <ExtraText>Don't have an account already?</ExtraText>
                                         <TextLink>

@@ -91,7 +91,7 @@ const Signup = () => {
             <StyledContainer>
                 <StatusBar style="dark" />
                 <InnerContainer>
-                    <PageTitle>WorkSpace</PageTitle>
+                    <PageTitle>Gardone</PageTitle>
                     <SubTitle>Account Signup</SubTitle>
 
                     {show && (
