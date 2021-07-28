@@ -17,7 +17,7 @@ const FlowerPrevious = ({ previouslist, rewardOutput }) => {
 
             <ScrollView horizontal >
                 {previouslist.map((reward, index) => {
-                    return <View style={styles.previousRewardCard}>
+                    return <View key={index} style={styles.previousRewardCard}>
                         <Text>+ {reward[0].points} points</Text>
                         <Image source={rewardOutput(reward[0].state)[0]} style={styles.previousRewardImage} />
                         <Text>{reward[0].task_completed}</Text>
