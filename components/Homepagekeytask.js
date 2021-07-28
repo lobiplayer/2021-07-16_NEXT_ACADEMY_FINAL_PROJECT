@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
 import { LoginContext } from '../LoginContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Homepagekeytask = () => {
 
@@ -9,7 +10,8 @@ const Homepagekeytask = () => {
     const [token, setToken] = useContext(LoginContext)
 
 
-    useEffect(() => {
+    useFocusEffect(
+        React.useCallback(() => {
         fetch("https://whispering-wildwood-06588.herokuapp.com/todolist_homepage", {
             method: 'POST',
             headers: {
@@ -26,7 +28,9 @@ const Homepagekeytask = () => {
             setLatesttodo(data.todolist_homepage);
 
         }));
-    }, []);
+            return () => { };
+
+        }, []));
 
 
     return (
@@ -41,7 +45,6 @@ const Homepagekeytask = () => {
                 {latestTodo.map((todo, index) => {
                     return <View style={styles.pageBox}>
                         <Text style={styles.boxText}>{todo.todo_text.toUpperCase()}</Text>
-                        <Text style={styles.boxDate}>Targeted completion date: {todo.deadline_id}</Text>
                     </View>
                 })}
             </ScrollView>

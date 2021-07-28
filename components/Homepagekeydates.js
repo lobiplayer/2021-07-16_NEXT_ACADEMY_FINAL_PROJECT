@@ -2,14 +2,16 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable, Dimensions } from 'react-native';
 import { LoginContext } from '../LoginContext';
+import { useFocusEffect } from '@react-navigation/native';
+
 
 const Homepagekeydates = () => {
 
     const [latestDeadline, setLatestdeadline] = useState([])
     const [token, setToken] = useContext(LoginContext)
 
-
-    useEffect(() => {
+    useFocusEffect(
+        React.useCallback(() => {
         fetch("https://whispering-wildwood-06588.herokuapp.com/deadline_homepage", {
             method: 'POST',
             headers: {
@@ -26,7 +28,9 @@ const Homepagekeydates = () => {
             setLatestdeadline(data.deadline_homepage);
 
         }));
-    }, []);
+            return () => { };
+
+        }, []));
 
     return (
         <View style={styles.layout}>

@@ -5,34 +5,40 @@ import RewardLoad from '../components/RewardLoad';
 import RewardPrevious from '../components/RewardPrevious';
 import RewardTotal from '../components/RewardTotal';
 import { LoginContext } from '../LoginContext';
+import { useFocusEffect } from '@react-navigation/native';
+
 
 const Rewards = () => {
 
     const [token, setToken] = useContext(LoginContext)
 
-    const [previouslist, setPreviouslist] = useState([[{points: 100, state: "Seedling", task_completed: "Testing", user_id: 1}]])
+    const [previouslist, setPreviouslist] = useState([[{ points: 100, state: "Seedling", task_completed: "Testing", user_id: 1 }]])
 
-    useEffect( () => {
-        fetch("http://192.168.1.120:5000/rewardslist", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: token,
+    useFocusEffect(
+        React.useCallback(() => {
+            fetch("https://whispering-wildwood-06588.herokuapp.com/rewardslist", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: token,
 
-            })
-    }).then(response => response.json().then(data => {
+                })
+            }).then(response => response.json().then(data => {
 
-            console.log(data);
-            setPreviouslist(data.rewardslist);
+                console.log(data);
+                setPreviouslist(data.rewardslist);
 
-        }));
-    }, []);
+            }));
+            return () => { };
+
+        }, []));
 
     const [totalPoints, setTotalpoints] = useState(0)
 
-    useEffect(() => {
+    useFocusEffect(
+        React.useCallback(() => {
         fetch("http://192.168.1.120:5000/rewardslist_totalpoints", {
             method: 'POST',
             headers: {
@@ -48,14 +54,16 @@ const Rewards = () => {
             setTotalpoints(data.total_points);
 
         }));
-    }, []);
+            return () => { };
+
+        }, []));
 
 
 
 
     const maxPoints = 500
     const pointsToBloom = maxPoints - (totalPoints % maxPoints);
-    
+
     // const [points, setPoints] = useState({
     //     message: rewardInfo.rewardMessage, pointsToBloom: pointsToBloom, rewardImage: rewardInfo.rewardImage
     // });
@@ -73,7 +81,7 @@ const Rewards = () => {
             output.push(data[0][0].image)
             output.push(data[0][0].message)
         }
-        
+
 
         else if (state == "Germination") {
             output.push(data[1][0].image)
@@ -101,7 +109,7 @@ const Rewards = () => {
 
         }
 
-        return output 
+        return output
     }
 
 
@@ -123,7 +131,7 @@ const Rewards = () => {
         <ScrollView contentContainerStyle={styles.layout}>
             <Text style={styles.header}>REWARDS</Text>
             <RewardTotal totalPoints={totalPoints} />
-            <RewardLoad rewardOutput={rewardOutput} previouslist={previouslist} totalPoints={totalPoints} maxPoints = {maxPoints}/>
+            <RewardLoad rewardOutput={rewardOutput} previouslist={previouslist} totalPoints={totalPoints} maxPoints={maxPoints} />
             <RewardPrevious previouslist={previouslist} rewardOutput={rewardOutput} />
 
 
@@ -146,7 +154,7 @@ const styles = StyleSheet.create({
         flexGrow: 3,
         marginTop: "15%",
         margin: "5%",
-    
+
     },
 
     header: {

@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 const PomodoroRewards = () => {
 
 useEffect(() => {
-    fetch("http://192.168.1.120:5000/add_rewardslist", {
+    fetch("https://whispering-wildwood-06588.herokuapp.com/add_rewardslist", {
         method: 'POST',
         body: JSON.stringify({
             points: '100',
