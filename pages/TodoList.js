@@ -12,13 +12,15 @@ import TodoForm from '../components/TodoForm';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { LoginContext } from '../LoginContext';
 import Todobunny from '../components/Todobunny';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function TodoList() {
     const [todos, setTodos] = useState([]);
     const [token, setToken] = useContext(LoginContext)
 
 
-    useEffect(() => {
+    useFocusEffect(
+        React.useCallback(() => {
         fetch("https://whispering-wildwood-06588.herokuapp.com/todos", {
             method: 'POST',
             headers: {
@@ -34,7 +36,9 @@ export default function TodoList() {
             setTodos(data.todos);
 
         }));
-    }, []);
+            return () => { };
+
+        }, []));
 
     // useEffect(() => {
     //     fetch("http://192.168.0.160:5000/todos").then(response => response.json().then(data => {
