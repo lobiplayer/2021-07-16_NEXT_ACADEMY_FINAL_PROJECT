@@ -72,8 +72,15 @@ const Adddeadline = ({ setIsModalVisible, setItems }) => {
                         }).then(response => response.json().then(data => {
 
                             console.log(data);
-                            setItems(data.deadlines)
                             setIsModalVisible(false);
+                            const newObject = {}
+                            data.deadlines.map(deadline => {
+                                console.log(deadline.date)
+                                newObject[deadline.deadline_date] = [{ name: deadline.description, subject: deadline.subject }]
+                            })
+                            console.log("safdsafadsf", newObject)
+                            setItems(newObject);
+                            
 
                         }));
 
