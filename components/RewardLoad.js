@@ -5,7 +5,7 @@ import { StyleSheet, View, ScrollView, TextInput, Button, Image, Text, Pressable
 
 const RewardLoad = ({ previouslist, totalPoints, rewardOutput, maxPoints }) => {
 
-    console.log(previouslist)
+    console.log(previouslist, totalPoints)
 
     const lastitem = previouslist.length - 1
 

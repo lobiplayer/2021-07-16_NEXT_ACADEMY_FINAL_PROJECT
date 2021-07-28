@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { LoginContext } from '../LoginContext';
 
 const Task = ({ todos, setTodos }) => {
+
+    const [token, setToken] = useContext(LoginContext)
+
     console.log( todos, "read this")
     let itemsCopy = [...todos]
 
@@ -27,16 +31,30 @@ const Task = ({ todos, setTodos }) => {
                 },
                 body: JSON.stringify({
                     points: '100',
-                    user_id: '1',
+                    user_id: token,
                     task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
-                    '/' + new Date().getMonth() + '/' + new Date().getFullYear(),
+                    '/' + new Date().getMonth() + '/' + new Date().getFullYear()
                 })
             })
 
             if (response.ok) {
                 console.log('response work')
             }
-        }
+        
+            const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/update_todos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    todo_id: itemsCopy[i].id
+                })
+            })
+        
+
+        if (resp.ok) {
+            console.log('response work')
+        }}
     }
 
 
