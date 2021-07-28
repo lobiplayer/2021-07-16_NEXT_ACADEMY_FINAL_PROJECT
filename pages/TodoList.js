@@ -18,7 +18,7 @@ export default function TodoList() {
 
 
     useEffect(() => {
-        fetch("http://192.168.0.160:5000/todos", {
+        fetch("https://whispering-wildwood-06588.herokuapp.com/todos", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

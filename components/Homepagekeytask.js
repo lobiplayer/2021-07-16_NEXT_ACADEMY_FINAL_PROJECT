@@ -10,7 +10,7 @@ const Homepagekeytask = () => {
 
 
     useEffect(() => {
-        fetch("http://192.168.1.120:5000/todolist_homepage", {
+        fetch("https://whispering-wildwood-06588.herokuapp.com/todolist_homepage", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
