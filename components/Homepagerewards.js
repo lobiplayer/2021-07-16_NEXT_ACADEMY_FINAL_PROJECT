@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
 
     layout: {
         flex: 1,
-        height: "40%",
         width: Dimensions.get('window').width,
         marginBottom: "3%",
         backgroundColor: 'white',
@@ -68,7 +67,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         paddingVertical: 7,
         borderRadius: 20,
-        marginBottom: 10,
         alignItems: 'center',
     },
 

@@ -46,7 +46,7 @@ const Homepagekeytask = () => {
                     return <View style={styles.pageBox}>
                         <Text style={styles.boxText}>{todo.todo_text.toUpperCase()}</Text>
                     </View>
-                })}
+                }).reverse()}
             </ScrollView>
         </View>
 
