@@ -36,7 +36,24 @@ export default function TodoList() {
             setTodos(data.todos);
 
         }));
-            return () => { };
+            return () => { 
+                fetch("https://whispering-wildwood-06588.herokuapp.com/todos", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_id: token,
+
+                    })
+                }).then(response => response.json().then(data => {
+
+                    console.log(data);
+                    setTodos(data.todos);
+
+                }));
+                
+            };
 
         }, []));
 

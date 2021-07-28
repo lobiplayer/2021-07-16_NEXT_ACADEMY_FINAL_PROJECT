@@ -6,23 +6,36 @@ const Task = ({ todos, setTodos }) => {
 
     const [token, setToken] = useContext(LoginContext)
 
-    console.log( todos, "read this")
+    console.log(todos, "read this")
     let itemsCopy = [...todos]
 
 
     // completing a task & deleting //
     const deleteTask = (index) => {
-        itemsCopy.splice(index, 1)
-        setTodos(itemsCopy);
+        // itemsCopy.splice(index, 1)
+        // setTodos(itemsCopy);
+
+        const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/delete_todos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                todo_id: itemsCopy[index].id,
+                user_id: token,
+            })
+        }).then(response => response.json().then(data => {
+
+            console.log(data);
+            setTodos(data.todos);
+
+        }));
+
     }
 
     const completeTask = (i) => {
-        if (itemsCopy[i].is_done === true) {
-            itemsCopy[i].is_done = false;
-            setTodos(itemsCopy);
-        } else {
-            itemsCopy[i].is_done = true;
-            setTodos(itemsCopy);
+
+        if (itemsCopy[i].is_done === false) {
 
             const response = fetch('https://whispering-wildwood-06588.herokuapp.com/add_rewardslist', {
                 method: 'POST',
@@ -32,30 +45,39 @@ const Task = ({ todos, setTodos }) => {
                 body: JSON.stringify({
                     points: '100',
                     user_id: token,
-                    task_completed: 'Completed task ' + itemsCopy[i].task + ' on ' + new Date().getDate() + 
-                    '/' + new Date().getMonth() + '/' + new Date().getFullYear()
+                    task_completed: 'Completed task ' + itemsCopy[i].todo_text + ' on ' + new Date().getDate() +
+                        '/' + new Date().getMonth() + '/' + new Date().getFullYear()
                 })
             })
 
             if (response.ok) {
                 console.log('response work')
             }
-        
-            const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/update_todos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    todo_id: itemsCopy[i].id
-                })
-            })
-        
+            // itemsCopy[i].is_done = false;
+            // setTodos(itemsCopy);
+        }
 
-        if (resp.ok) {
-            console.log('response work')
-        }}
+        // itemsCopy[i].is_done = true;
+        // setTodos(itemsCopy);
+
+        const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/update_todos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                todo_id: itemsCopy[i].id,
+                user_id: token,
+            })
+
+        }).then(response => response.json().then(data => {
+
+            console.log(data);
+            setTodos(data.todos);
+
+        }));
     }
+
 
 
     return (
@@ -115,7 +137,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
-        
+
     },
     completedItem: {
         backgroundColor: 'lightgray',
@@ -134,7 +156,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         flexWrap: 'wrap',
-        
+
     },
     itemText: {
         maxWidth: '80%',
