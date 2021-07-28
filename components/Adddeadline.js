@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { LoginContext } from '../LoginContext';
 
 
-const Adddeadline = () => {
+const Adddeadline = ({setIsModalVisible}) => {
     // const { control, handleSubmit, formState: { errors } } = useForm();
     // const onSubmit = data => console.log(data);
 
@@ -73,6 +73,9 @@ const Adddeadline = () => {
 
                         if (response.ok) {
                             console.log('response work')}
+                        setIsModalVisible(false)
+                        
+                        
                         }} />
                 </View>
             )}

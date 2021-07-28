@@ -14,7 +14,7 @@ const ModalAdddeadline = () => {
             <Modal
                 isVisible={isModalVisible}>
                 <View style={styles.container}>
-                    <Adddeadline />
+                    <Adddeadline setIsModalVisible = {setIsModalVisible}/>
                     <View>
                         <Button title="Hide modal" onPress={toggleModal} color='#0000c8'/>
                     </View>
