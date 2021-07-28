@@ -34,7 +34,7 @@ const TodoForm = ({ todos, setTodos }) => {
 
                     console.log(data);
                     Keyboard.dismiss();
-                    setTodos([...todos, { todo_text: taskItems, is_done: false }]);
+                    setTodos(data.todos);
                     setTaskItems("")
                     textInput.clear();
 
