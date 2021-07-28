@@ -39,7 +39,7 @@ const Homepagekeydates = () => {
                 <Text style={styles.subtitleText}>YOUR UPCOMING KEY DATES</Text>
             </View>
 
-            <ScrollView horizontal>
+            <ScrollView>
 
                 {latestDeadline.map((deadline, index) => {
                     return <View style={styles.display}>
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     },
 
     circle: {
-        height: 80,
-        width: 80,
+        height: 90,
+        width: 90,
         borderRadius: 100,
         backgroundColor: '#0000c8',
         marginRight: 20,
@@ -138,10 +138,10 @@ const styles = StyleSheet.create({
     },
 
     line: {
-        height: 100,
+        height: 120,
         width: 7,
         backgroundColor: '#fdb913',
-        marginTop: '-5%',
+        marginVertical: '-5%',
         justifyContent: 'center',
     },
 
