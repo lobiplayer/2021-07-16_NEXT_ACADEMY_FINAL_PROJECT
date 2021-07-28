@@ -63,7 +63,7 @@ const Adddeadline = () => {
                     <Button title="Submit" color='#0000c8' onPress = { async () => {
                         values.user_id = token
                         console.log(values)
-                        const response = await fetch("http://192.168.0.152:5000/add_deadline", {
+                        const response = await fetch("https://whispering-wildwood-06588.herokuapp.com/add_deadline", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
