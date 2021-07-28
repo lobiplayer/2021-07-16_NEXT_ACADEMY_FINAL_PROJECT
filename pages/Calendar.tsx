@@ -131,7 +131,7 @@ const Calendar: React.FC = () => {
                     textDayHeaderFontSize: 16,
                 }}
             />
-            <ModalAdddeadline />
+            <ModalAdddeadline setItems = {setItems}/>
         </SafeAreaView>
     );
 };

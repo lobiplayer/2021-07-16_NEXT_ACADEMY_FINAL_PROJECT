@@ -3,7 +3,7 @@ import { Button, View, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 import Adddeadline from './Adddeadline';
 
-const ModalAdddeadline = () => {
+const ModalAdddeadline = ({setItems}) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
@@ -14,7 +14,7 @@ const ModalAdddeadline = () => {
             <Modal
                 isVisible={isModalVisible}>
                 <View style={styles.container}>
-                    <Adddeadline setIsModalVisible = {setIsModalVisible}/>
+                    <Adddeadline setIsModalVisible = {setIsModalVisible} setItems = {setItems}/>
                     <View>
                         <Button title="Hide modal" onPress={toggleModal} color='#0000c8'/>
                     </View>
