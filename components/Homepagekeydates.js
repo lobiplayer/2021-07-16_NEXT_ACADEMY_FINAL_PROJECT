@@ -42,9 +42,9 @@ const Homepagekeydates = () => {
             <ScrollView>
 
                 {latestDeadline.map((deadline, index) => {
-                    return <View style={styles.display}>
+                    return <View key={index} style={styles.display}>
                         
-                        <View style={styles.line}></View>
+                        <View key={index} style={styles.line}></View>
                         <View style={styles.circle}>
                         <Text style={styles.date}> {deadline.date.toUpperCase()}</Text>
                         </View>

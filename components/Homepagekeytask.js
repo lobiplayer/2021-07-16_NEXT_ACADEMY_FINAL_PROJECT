@@ -43,7 +43,7 @@ const Homepagekeytask = () => {
             <ScrollView horizontal>
 
                 {latestTodo.map((todo, index) => {
-                    return <View style={styles.pageBox}>
+                    return <View key={index} style={styles.pageBox}>
                         <Text style={styles.boxText}>{todo.todo_text.toUpperCase()}</Text>
                     </View>
                 })}
