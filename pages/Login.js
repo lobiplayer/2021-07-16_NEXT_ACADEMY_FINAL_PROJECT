@@ -60,7 +60,7 @@ const Login = () => {
     const login = (email, password) => {
 
 
-        fetch('http://192.168.0.160:5000/user_login', {
+        fetch('https://whispering-wildwood-06588.herokuapp.com/user_login', {
 
             method: 'POST',
             headers: {

@@ -50,5 +50,5 @@
     "typescript": "~4.0.0"
   },
   "private": true,
-  "proxy": "http://192.168.1.120:5000"
+  "proxy": "https://whispering-wildwood-06588.herokuapp.com/"
 }
