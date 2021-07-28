@@ -15,7 +15,7 @@ class Timer extends React.Component {
   }
 
   // gets called when a stream of new props arrive from parent component
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     this.setState({ running: false, time: nextProps.period * 60 });
     if (this.state.running === true && this.state.time == 0) {
       this.handlePlay();
@@ -29,7 +29,7 @@ class Timer extends React.Component {
           running={this.state.running}
           intervalType={this.props.intervalType}
         />
-        <TimerDisplay time={this.state.time}  />
+        <TimerDisplay time={this.state.time} />
         <View style={styles.picture}>
           <Image source={require('../assets/Snail.png')} style={styles.picture} />
         </View>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
 
   picture: {
-    height:95,
+    height: 95,
     width: 130,
     marginTop: '-20%',
     marginRight: '-30%',

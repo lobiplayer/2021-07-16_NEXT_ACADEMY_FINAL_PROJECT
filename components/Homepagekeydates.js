@@ -44,7 +44,7 @@ const Homepagekeydates = () => {
                 {latestDeadline.map((deadline, index) => {
                     return <View key={index} style={styles.display}>
                         
-                        <View key={index} style={styles.line}></View>
+                        <View style={styles.line}></View>
                         <View style={styles.circle}>
                         <Text style={styles.date}> {deadline.date.toUpperCase()}</Text>
                         </View>
