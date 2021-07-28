@@ -19,6 +19,7 @@ const Task = ({ todos, setTodos }) => {
         } else {
             itemsCopy[i].is_done = true;
             setTodos(itemsCopy);
+
             const response = fetch('https://whispering-wildwood-06588.herokuapp.com/add_rewardslist', {
                 method: 'POST',
                 headers: {
