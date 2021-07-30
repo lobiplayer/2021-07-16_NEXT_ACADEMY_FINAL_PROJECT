@@ -51,7 +51,7 @@ const Calendar: React.FC = () => {
 
        useEffect(() => {
 
-           fetch("http://192.168.0.152:5000/deadlines", {
+           fetch("https://whispering-wildwood-06588.herokuapp.com/deadlines", {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json'
