@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { LoginContext } from '../LoginContext';
 
 
-const Adddeadline = () => {
+const Adddeadline = ({ setIsModalVisible, setItems }) => {
     // const { control, handleSubmit, formState: { errors } } = useForm();
     // const onSubmit = data => console.log(data);
 
@@ -31,13 +31,13 @@ const Adddeadline = () => {
 
     return (
         <Formik
-            initialValues={{ description: '', subject: '', date: ''}}
+            initialValues={{ description: '', subject: '', date: '' }}
             onSubmit={values => sendData(values)}
         >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <View>
                     <InputBox
-                        label = "Text"
+                        label="Text"
                         placeholder="Chapter 1 paragraph"
                         onChangeText={handleChange('description')}
                         onBlur={handleBlur('description')}
@@ -45,7 +45,7 @@ const Adddeadline = () => {
                         onChange={e => setdescription(e.target.value)}
                     />
                     <InputBox
-                        label = "Subject"
+                        label="Subject"
                         placeholder="Mathematics"
                         onChangeText={handleChange('subject')}
                         onBlur={handleBlur('subject')}
@@ -54,26 +54,38 @@ const Adddeadline = () => {
                     />
                     <InputBox
                         label="Due date and time"
-                        placeholder = "2021-07-27"
+                        placeholder="2021-07-27"
                         onChangeText={handleChange('date')}
                         onBlur={handleBlur('date')}
                         value={values.date}
                         onChange={e => setdate(e.target.value)}
                     />
-                    <Button title="Submit" color='#0000c8' onPress = { async () => {
+                    <Button title="Submit" color='#0000c8' onPress={async () => {
                         values.user_id = token
                         console.log(values)
                         const response = await fetch("https://whispering-wildwood-06588.herokuapp.com/add_deadline", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
                             body: JSON.stringify(values)
-                    })
+                        }).then(response => response.json().then(data => {
 
-                        if (response.ok) {
-                            console.log('response work')}
-                        }} />
+                            console.log(data);
+                            setIsModalVisible(false);
+                            const newObject = {}
+                            data.deadlines.map(deadline => {
+                                console.log(deadline.date)
+                                newObject[deadline.deadline_date] = [{ name: deadline.description, subject: deadline.subject }]
+                            })
+                            console.log("safdsafadsf", newObject)
+                            setItems(newObject);
+                            
+
+                        }));
+
+                    }
+                    } />
                 </View>
             )}
         </Formik>
@@ -88,17 +100,18 @@ export const InputBox = (props) => {
 
     return (
         <View>
-            <Text style={{ 
-                paddingVertical: 10, 
-                paddingHorizontal: 0, 
-                fontSize: 18 }}>
+            <Text style={{
+                paddingVertical: 10,
+                paddingHorizontal: 0,
+                fontSize: 18
+            }}>
                 {props.label}
             </Text >
             <TextInput
-                style={{ 
-                    padding: 8, 
+                style={{
+                    padding: 8,
                     backgroundColor: '#f5f5f5',
-                    width: '100%', 
+                    width: '100%',
                 }}
                 onChangeText={props.onChangeText}
                 value={props.value}

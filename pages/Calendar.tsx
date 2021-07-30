@@ -5,6 +5,7 @@ import { Agenda } from 'react-native-calendars';
 import { Card, Avatar } from 'react-native-paper';
 import ModalAdddeadline from '../components/ModalAdddeadline';
 import { LoginContext } from '../LoginContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 type Item = {
     name: string;
@@ -49,8 +50,9 @@ const Calendar: React.FC = () => {
         '2021-07-27' : [{name: 'test 1', subject: 'english'}]
     });
 
-       useEffect(() => {
 
+    useFocusEffect(
+        React.useCallback(() => {
            fetch("https://whispering-wildwood-06588.herokuapp.com/deadlines", {
                method: 'POST',
                headers: {
@@ -72,7 +74,9 @@ const Calendar: React.FC = () => {
             setItems(newObject);
         })
         );
-    }, []);
+            return () => { };
+
+        }, []));
 
     const renderItem = (item: Item) => {
         return (
@@ -128,7 +132,7 @@ const Calendar: React.FC = () => {
                     textDayHeaderFontSize: 16,
                 }}
             />
-            <ModalAdddeadline />
+            <ModalAdddeadline setItems = {setItems}/>
         </SafeAreaView>
     );
 };

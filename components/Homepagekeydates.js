@@ -19,7 +19,7 @@ const Homepagekeydates = () => {
             },
             body: JSON.stringify({
                 user_id: token,
-                date_today: new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate(),
+                date_today: new Date().getFullYear() + '- 07 -' + new Date().getDate(),
 
             })
         }).then(response => response.json().then(data => {
@@ -60,7 +60,7 @@ const Homepagekeydates = () => {
                 {latestDeadline.map((deadline, index) => {
                     return <View key={index} style={styles.display}>
                         
-                        <View key={index} style={styles.line}></View>
+                        <View style={styles.line}></View>
                         <View style={styles.circle}>
                         <Text style={styles.date}> {deadline.date} </Text>
                         </View>

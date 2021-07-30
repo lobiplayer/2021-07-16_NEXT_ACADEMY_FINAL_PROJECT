@@ -12,10 +12,7 @@ const Task = ({ todos, setTodos }) => {
 
     // completing a task & deleting //
     const deleteTask = (index) => {
-        // itemsCopy.splice(index, 1)
-        // setTodos(itemsCopy);
-
-        const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/delete_todos', {
+       const resp = fetch('https://whispering-wildwood-06588.herokuapp.com/delete_todos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,6 +31,7 @@ const Task = ({ todos, setTodos }) => {
     }
 
     const completeTask = (i) => {
+
 
         if (itemsCopy[i].is_done === false) {
 
@@ -77,7 +75,6 @@ const Task = ({ todos, setTodos }) => {
 
         }));
     }
-
 
 
     return (

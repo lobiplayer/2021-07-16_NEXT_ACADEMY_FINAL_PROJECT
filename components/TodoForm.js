@@ -22,23 +22,24 @@ const TodoForm = ({ todos, setTodos }) => {
     const handleSubmit = () => {
         if (taskItems.trim().length != 0) {
             fetch("https://whispering-wildwood-06588.herokuapp.com/add_todo", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: token,
-                    todo_text: taskItems,
-                })
-            }).then(response => response.json().then(data => {
 
-                console.log(data);
-                Keyboard.dismiss();
-                setTodos(data.todos);
-                setTaskItems("")
-                textInput.clear();
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_id: token,
+                        todo_text: taskItems,
+                    })
+                }).then(response => response.json().then(data => {
 
-            }));
+                    console.log(data);
+                    Keyboard.dismiss();
+                    setTodos(data.todos);
+                    setTaskItems("")
+                    textInput.clear();
+
+                }));
         }
     }
 
