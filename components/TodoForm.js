@@ -22,6 +22,7 @@ const TodoForm = ({ todos, setTodos }) => {
     const handleSubmit = () => {
         if (taskItems.trim().length != 0) {
             fetch("https://whispering-wildwood-06588.herokuapp.com/add_todo", {
+
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

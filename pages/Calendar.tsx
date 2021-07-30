@@ -50,6 +50,7 @@ const Calendar: React.FC = () => {
         '2021-07-27' : [{name: 'test 1', subject: 'english'}]
     });
 
+
     useFocusEffect(
         React.useCallback(() => {
            fetch("https://whispering-wildwood-06588.herokuapp.com/deadlines", {
@@ -120,9 +121,9 @@ const Calendar: React.FC = () => {
                     arrowColor: 'orange',
                     monthTextColor: '#0000c8',
                     indicatorColor: '#0000c8',
-                    textDayFontFamily: 'monospace',
-                    textMonthFontFamily: 'monospace',
-                    textDayHeaderFontFamily: 'monospace',
+                    // textDayFontFamily: 'monospace',
+                    // textMonthFontFamily: 'monospace',
+                    // textDayHeaderFontFamily: 'monospace',
                     textDayFontWeight: '300',
                     textMonthFontWeight: 'bold',
                     textDayHeaderFontWeight: '300',

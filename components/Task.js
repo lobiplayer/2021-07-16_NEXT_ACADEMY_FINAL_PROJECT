@@ -6,7 +6,7 @@ const Task = ({ todos, setTodos }) => {
 
     const [token, setToken] = useContext(LoginContext)
 
-    console.log( todos, "read this")
+    console.log(todos, "read this")
     let itemsCopy = [...todos]
 
 
@@ -31,6 +31,8 @@ const Task = ({ todos, setTodos }) => {
     }
 
     const completeTask = (i) => {
+
+
         if (itemsCopy[i].is_done === false) {
 
             const response = fetch('https://whispering-wildwood-06588.herokuapp.com/add_rewardslist', {
@@ -73,6 +75,7 @@ const Task = ({ todos, setTodos }) => {
 
         }));
     }
+
 
     return (
         <View style={styles.items}>
@@ -131,7 +134,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
-        
+
     },
     completedItem: {
         backgroundColor: 'lightgray',
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         flexWrap: 'wrap',
-        
+
     },
     itemText: {
         maxWidth: '80%',

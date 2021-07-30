@@ -44,6 +44,7 @@ const Homepagekeytask = () => {
 
                 {latestTodo.map((todo, index) => {
                     return <View key={index} style={styles.pageBox}>
+                        
                         <Text style={styles.boxText}>{todo.todo_text.toUpperCase()}</Text>
                     </View>
                 }).reverse()}

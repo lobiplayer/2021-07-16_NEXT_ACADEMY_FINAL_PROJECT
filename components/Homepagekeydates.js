@@ -32,6 +32,22 @@ const Homepagekeydates = () => {
 
         }, []));
 
+        // function calculateDays(deadlineDate){
+        //     const dateToday = Date()
+        //     const dateTarget = deadlineDate
+        //     const Difference_In_Time = dateTarget.getTime() - dateToday.getTime();
+        //     const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            
+        //     if (Difference_In_Days > 0){
+        //         return Difference_In_Days}
+            
+        //     else {
+        //         return "Today"
+        //     }
+            
+
+        // }
+
     return (
         <View style={styles.layout}>
 
@@ -46,7 +62,7 @@ const Homepagekeydates = () => {
                         
                         <View style={styles.line}></View>
                         <View style={styles.circle}>
-                        <Text style={styles.date}> {deadline.date.toUpperCase()}</Text>
+                        <Text style={styles.date}> {deadline.date} </Text>
                         </View>
 
                         <View style={styles.rectangle}>

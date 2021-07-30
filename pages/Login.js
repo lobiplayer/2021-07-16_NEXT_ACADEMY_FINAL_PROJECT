@@ -45,16 +45,6 @@ const Login = () => {
 
     const nav = useNavigation();
 
-    // const fetchUserInfo = () => {
-    //     axios.get("https://insta.nextacademy.com/api/v1/users/me", {
-    //         headers: {
-    //             Authorization: "Bearer " + localStorage.getItem("token")
-    //         }
-    //     })
-    //         .then(resp => updateCurrentUser(resp.data))
-    // }
-
-
     const [token, setToken] = useContext(LoginContext)
 
     const login = (email, password) => {
@@ -81,22 +71,6 @@ const Login = () => {
     }
 
 
-
-    // axios.post("https://insta.nextacademy.com/api/v1/login", email, password)
-    //     .then((resp) => {
-    //         changeUsername("")
-    //         changePassword("")
-    //         localStorage.setItem("token", resp.data.auth_token)
-    //         fetchUserInfo()
-    //     })
-
-
-    // useEffect(() => {
-    //     const token = AsyncStorage.getItem('@storage_Key')
-    //     if (token) {
-    //         updateCurrentUser(token)
-    //     }
-    // }, [])
 
     return (
   
